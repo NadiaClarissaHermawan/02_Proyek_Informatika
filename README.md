@@ -5,7 +5,7 @@ android electronics shop application
 <pre>
 - Nadia Clarissa H    6181901013
 - Reynaldi Lukas Y    6181901038
-- Thomas Christian H  7316027
+- Thomas Christian H  2016730027
 </pre>
 
 # Project Details :
