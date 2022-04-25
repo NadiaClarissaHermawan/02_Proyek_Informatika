@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ElectronicStore_01</string>
+    <string-array name="category">
+        <item>Category 1</item>
+        <item>Category 2</item>
+    </string-array>
+    <string-array name="layout">
+        <item>List</item>
+        <item>Tiles</item>
+    </string-array>
 </resources>
