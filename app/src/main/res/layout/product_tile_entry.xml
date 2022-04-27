@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10px"
+    android:background="@drawable/tiles_border"
+    >
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        />
+    <LinearLayout
+        android:background="@drawable/tiles_border"
+        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_width="match_parent"
+        >
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:text="name"
+            android:textSize="30dp"
+        />
+        <TextView
+            android:id="@+id/product_condition"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:text="condition"
+            android:textSize="30dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/tiles_border"
+        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_width="match_parent"
+        >
+        <TextView
+            android:id="@+id/product_category"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:text="category"
+            android:textSize="30dp"
+            />
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:text="price"
+            android:textSize="30dp"
+            />
+    </LinearLayout>
+</LinearLayout>
+
+
