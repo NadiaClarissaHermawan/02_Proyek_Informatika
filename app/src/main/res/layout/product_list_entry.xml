@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10px"
+    android:background="@color/cream_list"
+    >
+    <LinearLayout
+        android:id="@+id/pencetan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:textSize="10sp"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_name"
+            android:text="PRODUCT NAME"
+            >
+        </TextView>
+        <TextView
+            android:textSize="10sp"
+            android:layout_width="0dp"
+            android:layout_weight="0.17"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_category"
+            android:text="CATEGORY"
+            >
+        </TextView>
+        <TextView
+            android:textSize="10sp"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_price"
+            android:text="PRICE"
+            >
+        </TextView>
+        <TextView
+            android:textSize="10sp"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_condition"
+            android:text="CONDITION"
+            >
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>
+
+

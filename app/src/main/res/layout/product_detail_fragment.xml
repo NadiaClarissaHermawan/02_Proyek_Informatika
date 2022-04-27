@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/cream"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:background="@color/light_green"
+            >
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="600px"
+                android:layout_height="600px"
+                android:layout_centerInParent="true"
+                android:layout_weight="0.1" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+            <TextView
+                android:id="@+id/product_name"
+                android:text="Product Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+            />
+            <TextView
+                android:id="@+id/product_category"
+                android:text="Product Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+            />
+            <TextView
+                android:id="@+id/product_price"
+                android:text="Price:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+            />
+            <TextView
+                android:id="@+id/product_condition"
+                android:text="Condition:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+            />
+            <TextView
+                android:id="@+id/product_description"
+                android:text="Description:"
+                android:background="@drawable/tiles_border"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="15dp"
+
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
