@@ -7,4 +7,6 @@ object Page {
     const val GRID_PAGE = 1
     const val DETAIL_PAGE = 2
     const val EXIT_PAGE = 999
+    const val CHANGE_PAGE_LISTENER = "ChangePage"
+    const val PAGE = "Page"
 }

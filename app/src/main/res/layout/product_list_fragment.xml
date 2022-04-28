@@ -33,13 +33,14 @@
             android:layout_weight="0.2"
             android:background="@color/light_green"
         />
-        <Spinner
-            android:id="@+id/dropdown_layout_type"
+        <Button
+            android:id="@+id/layout_type"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:background="@color/light_green"
+            android:text="layout"
             />
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
     </LinearLayout>

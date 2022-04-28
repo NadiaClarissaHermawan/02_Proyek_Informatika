@@ -37,12 +37,21 @@ class MainActivity : AppCompatActivity() {
         //initialize frag manager & set main page
         this.fragmentManager = supportFragmentManager
         this.changePage(Page.LIST_PAGE)
+
+        //change page listener
+        this.fragmentManager.setFragmentResultListener(Page.CHANGE_PAGE_LISTENER, this) {
+            _, result ->
+            var page = result.getInt(Page.PAGE)
+            this.changePage(page)
+        }
     }
 
     //method untuk ganti halaman
     fun changePage(page : Int) {
+        //exit
         if(page == Page.EXIT_PAGE){
             this.exitApp()
+        //change page
         }else{
             this.fragmentTransaction = this.fragmentManager.beginTransaction()
             if(this.currentFragment != page){
