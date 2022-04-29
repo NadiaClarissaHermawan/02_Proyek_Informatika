@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/drawable/border.xml" value="0.20833333333333334" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_detail_fragment.xml" value="0.24547101449275363" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_grid_entry.xml" value="0.3053435114503817" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_grid_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_list_entry.xml" value="0.1762917933130699" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_list_fragment.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/activity_main.xml" value="0.19375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_detail_fragment.xml" value="0.19375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_fragment.xml" value="0.14" />
