@@ -14,8 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.1"
         android:orientation="horizontal"
-        android:background="@color/blue"
-        >
+        android:background="@color/blue">
         <EditText
             android:id="@+id/search_bar"
             android:layout_width="0dp"
@@ -23,8 +22,7 @@
             android:layout_weight="0.5"
             android:background="@drawable/border"
             android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
-        />
+            android:layout_gravity="center" />
         <Spinner
             android:id="@+id/dropdown_category"
             android:layout_margin="5dp"
@@ -44,40 +42,7 @@
             />
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/dark_green"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:text="Product Name"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.17"
-            android:text="Category"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
-            android:text="Price"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
-            android:text="Condition"
-            />
-    </LinearLayout>
-    <GridView
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/lst_products"
@@ -86,7 +51,6 @@
         android:layout_gravity="center"
 
     />
-
 
     <RelativeLayout
         android:layout_width="match_parent"
