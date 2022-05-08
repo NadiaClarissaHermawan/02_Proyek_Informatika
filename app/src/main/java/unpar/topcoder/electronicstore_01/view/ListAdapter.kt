@@ -42,15 +42,22 @@ class ListAdapter (private var activity : Activity, private var presenter : List
         return this.listItemBinding.root
     }
 
+    //terima updated product list dari fragment
+    fun updateList(products : ArrayList<ProductDetails>) {
+        this.prods = ArrayList()
+        this.prods.addAll(products)
+        notifyDataSetChanged()
+    }
+
     //show prods details to layout
     fun updateLayout(currentProd : ProductDetails) {
         this.listItemBinding.productName.text = currentProd.getNama()
-        this.listItemBinding.productCategory.text = currentProd.getKategori()
+        this.listItemBinding.productCategory.text = ""+currentProd.getKategori()
         this.listItemBinding.productCondition.text = ""+currentProd.getKondisi()+"%"
-        this.listItemBinding.productPrice.text = ""+currentProd.getHarga()
+        this.listItemBinding.productPrice.text = "Rp "+currentProd.getHarga()
     }
 
     override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
+        TODO("pasang on click untuk detail item")
     }
 }

@@ -21,6 +21,7 @@
             android:layout_weight="0.33"
             android:layout_height="wrap_content"
             android:id="@+id/product_name"
+            android:textColor="@color/black"
             android:text="PRODUCT NAME"
             >
         </TextView>
@@ -30,6 +31,7 @@
             android:layout_weight="0.17"
             android:layout_height="wrap_content"
             android:id="@+id/product_category"
+            android:textColor="@color/black"
             android:text="CATEGORY"
             >
         </TextView>
@@ -39,6 +41,7 @@
             android:layout_weight="0.25"
             android:layout_height="wrap_content"
             android:id="@+id/product_price"
+            android:textColor="@color/black"
             android:text="PRICE"
             >
         </TextView>
@@ -48,6 +51,7 @@
             android:layout_weight="0.25"
             android:layout_height="wrap_content"
             android:id="@+id/product_condition"
+            android:textColor="@color/black"
             android:text="CONDITION"
             >
         </TextView>

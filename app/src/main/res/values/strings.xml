@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ElectronicStore_01</string>
+    <string name="app_name">North Electronic Store</string>
     <string-array name="category">
         <item>Category 1</item>
         <item>Category 2</item>

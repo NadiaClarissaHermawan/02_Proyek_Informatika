@@ -1,16 +1,18 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import unpar.topcoder.electronicstore_01.databinding.ProductListFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Page
+import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 
 //fragment
-class ListFragment : Fragment(), View.OnClickListener {
+class ListFragment : Fragment(), IProduct,View.OnClickListener {
     private lateinit var listBinding : ProductListFragmentBinding
     private lateinit var presenter : ListPresenter
     private lateinit var adapter : ListAdapter
@@ -21,12 +23,16 @@ class ListFragment : Fragment(), View.OnClickListener {
         this.listBinding = ProductListFragmentBinding.inflate(inflater, container, false)
 
         //buat, set adapter & presenter untuk tampilkan & operasikan list
-        this.presenter = ListPresenter()
+        this.presenter = ListPresenter(this)
         this.adapter = ListAdapter(requireActivity(), this.presenter)
         this.listBinding.lstProducts.adapter = this.adapter
 
         //set click listener
         this.listBinding.layoutType.setOnClickListener(this::onClick)
+        this.listBinding.buttonLoadMore.setOnClickListener(this::onClick)
+
+        //initial products
+        this.callUpdateList()
 
         return this.listBinding.root
     }
@@ -48,6 +54,19 @@ class ListFragment : Fragment(), View.OnClickListener {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.GRID_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+        //load more
+        }else if(view == this.listBinding.buttonLoadMore) {
+            this.callUpdateList()
         }
+    }
+
+    //load & update product list
+    private fun callUpdateList() {
+        this.presenter.updateList()
+    }
+
+    //salurkan updated product list dari presenter ke adapter
+    override fun updateList(products: ArrayList<ProductDetails>) {
+        this.adapter.updateList(products)
     }
 }

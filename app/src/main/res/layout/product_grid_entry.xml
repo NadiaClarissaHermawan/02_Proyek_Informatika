@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -31,6 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:text="name"
 
                     />
@@ -39,6 +39,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:text="condition"
 
                     />
@@ -55,6 +56,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:text="category"
 
                     />
@@ -63,11 +65,11 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:text="price"
 
                     />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>
 

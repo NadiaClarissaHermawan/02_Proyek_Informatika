@@ -52,10 +52,10 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
     //function update layout (buat recycle)
     fun updateLayout(currentProduct : ProductDetails){
         this.gridItemBinding.productName.text=currentProduct.getNama()
-        this.gridItemBinding.productCategory.text=currentProduct.getKategori()
+        this.gridItemBinding.productCategory.text=""+currentProduct.getKategori()
         this.gridItemBinding.productCondition.text = ""+currentProduct.getKondisi()+"%"
         this.gridItemBinding.productPrice.text = ""+currentProduct.getHarga()
-        this.gridItemBinding.productImage.setImageResource(currentProduct.getImageSource())
+        //this.gridItemBinding.productImage.setImageResource(currentProduct.getImageSource())
     }
 
     override fun onClick(v: View?) {

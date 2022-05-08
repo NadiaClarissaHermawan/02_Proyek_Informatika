@@ -42,12 +42,14 @@
             />
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
     </LinearLayout>
-    <GridLayout
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/lst_products"
         android:layout_weight="0.7"
-        android:numColumns="2"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
         android:layout_gravity="center"
 
     />
