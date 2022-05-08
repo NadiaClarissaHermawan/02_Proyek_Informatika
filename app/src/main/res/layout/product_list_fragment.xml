@@ -40,8 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:background="@color/light_green"
-            android:text="layout"
-            />
+            android:text="layout" />
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
     </LinearLayout>
     <LinearLayout

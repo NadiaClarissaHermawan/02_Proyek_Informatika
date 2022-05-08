@@ -53,5 +53,4 @@ class ListAdapter (private var activity : Activity, private var presenter : List
     override fun onClick(p0: View?) {
         TODO("Not yet implemented")
     }
-
 }
