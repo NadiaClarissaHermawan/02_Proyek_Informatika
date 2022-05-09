@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.ProductGridFragmentBinding
+import unpar.topcoder.electronicstore_01.model.AllProducts
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductCode
 import unpar.topcoder.electronicstore_01.model.ProductDetails
@@ -43,8 +44,9 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
 
         presenter.loadProducts(prods)
 
-        return this.gridBinding.root
+        //TODO(bikin listener untuk update product setelah list di update)
 
+        return this.gridBinding.root
     }
 
     //singleton
@@ -70,5 +72,6 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     //interface function untuk balikin hasil presenter
     override fun updateGrid(prods: ArrayList<ProductDetails>) {
         this.adapter.update(prods)
+        //TODO(send bundle ke list fragment untuk update listnya jg)
     }
 }

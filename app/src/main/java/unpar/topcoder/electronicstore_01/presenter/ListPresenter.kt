@@ -7,25 +7,25 @@ import unpar.topcoder.electronicstore_01.view.IProduct
 
 class ListPresenter(private val ui : IProduct) {
     private var products : ArrayList<ProductDetails> = ArrayList()
-    private var dataOffset : Int = 0
 
     //load & update produk u/ disalurkan ke UI (fragment)
-    fun updateList() {
+    fun updateList(offset : Int) {
+        var dataOffset = offset
         val prods : ArrayList<ProductDetails> = ArrayList()
-        if(this.dataOffset < AllProducts.products.size) {
-            for(i in this.dataOffset..(this.dataOffset + 4)) {
+        if(dataOffset < AllProducts.products.size) {
+            for(i in dataOffset..(dataOffset + 4)) {
                 if(i < AllProducts.products.size) {
-                    if(i == this.dataOffset + 4){
-                        this.dataOffset = i + 1
+                    if(i == dataOffset + 4){
+                        dataOffset = i + 1
                     }
                     prods.add(AllProducts.products[i])
                 }else {
-                    this.dataOffset = i + 1
+                    dataOffset = i + 1
                     break
                 }
             }
             this.products.addAll(prods)
-            this.ui.updateList(this.products)
+            this.ui.updateList(this.products, dataOffset)
         }
     }
 }
