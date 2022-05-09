@@ -1,7 +1,7 @@
 package unpar.topcoder.electronicstore_01.model
 
 //model including constructor
-class ProductDetails (private var nama : String, private var kondisi : Int, private var kategori : String, private var harga : String, private var imageSource:String) {
+class ProductDetails (private var nama : String, private var kondisi : Int, private var kategori : String, private var harga : String, private var imageSource:Int) {
     fun getNama () : String {
         return this.nama
     }
@@ -18,7 +18,7 @@ class ProductDetails (private var nama : String, private var kondisi : Int, priv
         return this.kategori
     }
 
-    fun getImageSource() : String {
+    fun getImageSource() : Int {
         return this.imageSource
     }
 }
