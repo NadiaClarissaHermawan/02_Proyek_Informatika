@@ -16,6 +16,7 @@ class ListFragment : Fragment(), IProduct,View.OnClickListener {
     private lateinit var listBinding : ProductListFragmentBinding
     private lateinit var presenter : ListPresenter
     private lateinit var adapter : ListAdapter
+    private var dataOffset : Int = 0
 
     //constructor
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
@@ -62,11 +63,13 @@ class ListFragment : Fragment(), IProduct,View.OnClickListener {
 
     //load & update product list
     private fun callUpdateList() {
-        this.presenter.updateList()
+        this.presenter.updateList(this.dataOffset)
     }
 
     //salurkan updated product list dari presenter ke adapter
-    override fun updateList(products: ArrayList<ProductDetails>) {
+    override fun updateList(products: ArrayList<ProductDetails>, newDataOffset : Int) {
         this.adapter.updateList(products)
+        //TODO(send bundle berisi offset sebelumnya ke fragment grid untuk update gridnya jg)
+        this.dataOffset = newDataOffset
     }
 }
