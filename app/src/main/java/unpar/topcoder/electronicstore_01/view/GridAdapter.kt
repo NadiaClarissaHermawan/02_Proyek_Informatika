@@ -55,7 +55,7 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
         this.gridItemBinding.productCategory.text=""+currentProduct.getKategori()
         this.gridItemBinding.productCondition.text = ""+currentProduct.getKondisi()+"%"
         this.gridItemBinding.productPrice.text = ""+currentProduct.getHarga()
-        //this.gridItemBinding.productImage.setImageResource(currentProduct.getImageSource())
+        this.gridItemBinding.productImage.setImageResource(currentProduct.getImageSource())
     }
 
     override fun onClick(v: View?) {
