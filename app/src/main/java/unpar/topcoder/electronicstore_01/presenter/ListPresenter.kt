@@ -19,7 +19,8 @@ class ListPresenter(private val ui : IProduct) {
                         this.dataOffset = i + 1
                     }
                     prods.add(AllProducts.products[i])
-                }else {
+                }
+                else {
                     this.dataOffset = i + 1
                     break
                 }
