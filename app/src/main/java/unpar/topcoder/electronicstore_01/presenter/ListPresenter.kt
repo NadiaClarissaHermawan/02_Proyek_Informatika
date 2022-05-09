@@ -12,18 +12,20 @@ class ListPresenter(private val ui : IProduct) {
     //load & update produk u/ disalurkan ke UI (fragment)
     fun updateList() {
         val prods : ArrayList<ProductDetails> = ArrayList()
-        for(i in this.dataOffset..(this.dataOffset + 4)) {
-            if(i < AllProducts.products.size) {
-                if(i == this.dataOffset + 4){
+        if(this.dataOffset < AllProducts.products.size) {
+            for(i in this.dataOffset..(this.dataOffset + 4)) {
+                if(i < AllProducts.products.size) {
+                    if(i == this.dataOffset + 4){
+                        this.dataOffset = i + 1
+                    }
+                    prods.add(AllProducts.products[i])
+                }else {
                     this.dataOffset = i + 1
+                    break
                 }
-                prods.add(AllProducts.products[i])
-            }else {
-                this.dataOffset = i + 1
-                break
             }
+            this.products.addAll(prods)
+            this.ui.updateList(this.products)
         }
-        this.products.addAll(prods)
-        this.ui.updateList(this.products)
     }
 }
