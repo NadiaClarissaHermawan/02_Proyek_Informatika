@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import unpar.topcoder.electronicstore_01.databinding.ProductListFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.model.Update
 import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 
 //fragment
@@ -17,6 +18,7 @@ class ListFragment : Fragment(), IProduct,View.OnClickListener {
     private lateinit var presenter : ListPresenter
     private lateinit var adapter : ListAdapter
     private var dataOffset : Int = 0
+
 
     //constructor
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
@@ -71,5 +73,9 @@ class ListFragment : Fragment(), IProduct,View.OnClickListener {
         this.adapter.updateList(products)
         //TODO(send bundle berisi offset sebelumnya ke fragment grid untuk update gridnya jg)
         this.dataOffset = newDataOffset
+        var bundle= Bundle()
+        bundle.putString(Update.TYPE, Update.GRID)
+        bundle.putInt(Update.OFFSET, newDataOffset)
+        parentFragmentManager.setFragmentResult(Update.UPDATE,bundle)
     }
 }

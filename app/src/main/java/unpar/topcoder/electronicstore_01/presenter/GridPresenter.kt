@@ -7,25 +7,26 @@ import unpar.topcoder.electronicstore_01.view.GridInterface
 
 class GridPresenter (private var ui:GridInterface){
     private var prods : ArrayList<ProductDetails> = ArrayList() //array berisi semua produk di database
-    private var dataOffset : Int = 0
 
-    fun updateList() {
+
+    fun updateGrid(offset : Int) {
+        var dataOffset = offset
         val prods : ArrayList<ProductDetails> = ArrayList()
-        if(this.dataOffset < AllProducts.products.size) {
-            for(i in this.dataOffset..(this.dataOffset + 4)) {
+        if(dataOffset < AllProducts.products.size) {
+            for(i in dataOffset..(dataOffset + 4)) {
                 if(i < AllProducts.products.size) {
-                    if(i == this.dataOffset + 4){
-                        this.dataOffset = i + 1
+                    if(i == dataOffset + 4){
+                        dataOffset = i + 1
                     }
                     prods.add(AllProducts.products[i])
-                }
-                else {
-                    this.dataOffset = i + 1
+
+                }else {
+                    dataOffset = i + 1
                     break
                 }
             }
             this.prods.addAll(prods)
-            this.ui.updateList(this.products)
+            this.ui.updateGrid(this.prods, dataOffset)
         }
     }
 //    private var currProds : ArrayList<ProductDetails> = ArrayList() // array berisi produk yang mau ditampilkan (akan ditampilkan per 4 prod)
