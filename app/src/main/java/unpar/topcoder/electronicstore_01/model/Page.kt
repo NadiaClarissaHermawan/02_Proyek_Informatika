@@ -8,5 +8,6 @@ object Page {
     const val DETAIL_PAGE = 2
     const val EXIT_PAGE = 999
     const val CHANGE_PAGE_LISTENER = "ChangePage"
+    const val CHANGE_TO_DETAILS_LISTENER = "changeToDetails"
     const val PAGE = "Page"
 }

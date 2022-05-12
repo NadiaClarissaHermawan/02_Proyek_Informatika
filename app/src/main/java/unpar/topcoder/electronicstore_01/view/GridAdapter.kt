@@ -15,11 +15,7 @@ import unpar.topcoder.electronicstore_01.presenter.GridPresenter
 
 class GridAdapter (private var activity: Activity, private var presenter: GridPresenter): BaseAdapter(), View.OnClickListener{
     private lateinit var gridItemBinding: ProductGridEntryBinding
-
-
     private var prods: MutableList<ProductDetails> = ArrayList()
-
-
 
     override fun getCount(): Int {
         return this.prods.size
@@ -68,5 +64,4 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
         this.prods.addAll(prods)
         this.notifyDataSetChanged()
     }
-
 }

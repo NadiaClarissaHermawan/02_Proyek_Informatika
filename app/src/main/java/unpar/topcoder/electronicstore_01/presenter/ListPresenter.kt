@@ -1,11 +1,10 @@
 package unpar.topcoder.electronicstore_01.presenter
 
-import android.util.Log
 import unpar.topcoder.electronicstore_01.model.AllProducts
 import unpar.topcoder.electronicstore_01.model.ProductDetails
-import unpar.topcoder.electronicstore_01.view.IProduct
+import unpar.topcoder.electronicstore_01.view.IList
 
-class ListPresenter(private val ui : IProduct) {
+class ListPresenter(private val ui : IList) {
     private var products : ArrayList<ProductDetails> = ArrayList()
 
     //load & update produk u/ disalurkan ke UI (fragment)
@@ -28,5 +27,10 @@ class ListPresenter(private val ui : IProduct) {
             this.products.addAll(prods)
             this.ui.updateList(this.products, dataOffset)
         }
+    }
+
+    //send current product details to list Fragment -> DetailFragment
+    fun goDetailsPage(currentProd : ProductDetails){
+        this.ui.moveToDetailsPage(currentProd)
     }
 }

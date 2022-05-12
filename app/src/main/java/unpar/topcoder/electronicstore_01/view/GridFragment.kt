@@ -16,8 +16,6 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     private lateinit var presenter: GridPresenter
     private lateinit var adapter : GridAdapter
     private lateinit var listFragment : ListFragment
-
-
     private var dataOffset : Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View?{
@@ -29,19 +27,6 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
 
         this.gridBinding.layoutType.setOnClickListener(this::onClick)
         this.gridBinding.buttonLoadMore.setOnClickListener(this::onClick)
-
-//        //masukin list produk ke adapter
-//        var p1 : ProductDetails = ProductDetails("produk 1", ProductCode.PMEDIUM, ProductCode.GALAXYBUDS,"50.000", R.drawable.test_image)
-//        var p2 : ProductDetails = ProductDetails("produk 2", ProductCode.PMEDIUM, ProductCode.SMARTPHONE,"50.000", R.drawable.test_image)
-//        var p3 : ProductDetails = ProductDetails("produk 3", ProductCode.PMEDIUM, ProductCode.WATCHES,"50.000",R.drawable.test_image)
-//        var p4 : ProductDetails = ProductDetails("produk 4", ProductCode.PHIGH, ProductCode.SMARTPHONE,"50.000", R.drawable.test_image)
-//        var p5 : ProductDetails = ProductDetails("produk 5", ProductCode.PMEDIUM, ProductCode.GALAXYBUDS,"50.000", R.drawable.test_image)
-//        var p6 : ProductDetails = ProductDetails("produk 6", ProductCode.PNEW, ProductCode.WATCHES,"50.000", R.drawable.test_image)
-//        var p7 : ProductDetails = ProductDetails("produk 7", ProductCode.PLOW, ProductCode.GALAXYBUDS,"50.000", R.drawable.test_image)
-//        var p8 : ProductDetails = ProductDetails("produk 8", ProductCode.PNEW, ProductCode.TABLET,"50.000", R.drawable.test_image)
-//        var p9 : ProductDetails = ProductDetails("produk 9", ProductCode.PNEW, ProductCode.TABLET,"50.000", R.drawable.test_image)
-//        var p10 : ProductDetails = ProductDetails("produk 10", ProductCode.PLOW, ProductCode.WATCHES,"50.000", R.drawable.test_image)
-//        var prods = arrayListOf(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10)
 
         presenter.updateGrid(this.dataOffset)
 
@@ -72,11 +57,10 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         }
     }
 
-    //interface function untuk balikin hasil presenter
+    //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
     override fun updateGrid(prods: ArrayList<ProductDetails>,newDataOffset : Int) {
         this.adapter.update(prods)
         this.dataOffset = newDataOffset
-        //TODO(send bundle ke list fragment untuk update listnya jg)
         this.listFragment.updateList(prods,newDataOffset)
     }
 }

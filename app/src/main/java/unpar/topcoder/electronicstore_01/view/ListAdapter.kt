@@ -11,6 +11,7 @@ import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 class ListAdapter (private var activity : Activity, private var presenter : ListPresenter) : BaseAdapter(), View.OnClickListener{
     private lateinit var listItemBinding : ProductListEntryBinding
     private var prods : ArrayList<ProductDetails> = ArrayList()
+    private lateinit var currentProd: ProductDetails
 
     override fun getCount(): Int {
         return this.prods.size
@@ -36,8 +37,11 @@ class ListAdapter (private var activity : Activity, private var presenter : List
         }
 
         //take current prod & show the details to layout
-        val currentProd = this.getItem(p0)
-        this.updateLayout(currentProd)
+        this.currentProd = this.getItem(p0)
+        this.updateLayout()
+
+        //set list item's on click listener
+        this.listItemBinding.root.setOnClickListener(this::onClick)
 
         return this.listItemBinding.root
     }
@@ -50,14 +54,15 @@ class ListAdapter (private var activity : Activity, private var presenter : List
     }
 
     //show prods details to layout
-    fun updateLayout(currentProd : ProductDetails) {
-        this.listItemBinding.productName.text = currentProd.getNama()
-        this.listItemBinding.productCategory.text = ""+currentProd.getKategori()
-        this.listItemBinding.productCondition.text = ""+currentProd.getKondisi()+"%"
-        this.listItemBinding.productPrice.text = "Rp "+currentProd.getHarga()
+    fun updateLayout() {
+        this.listItemBinding.productName.text = this.currentProd.getNama()
+        this.listItemBinding.productCategory.text = ""+this.currentProd.getKategori()
+        this.listItemBinding.productCondition.text = ""+this.currentProd.getKondisi()+"%"
+        this.listItemBinding.productPrice.text = "Rp "+this.currentProd.getHarga()
     }
 
+    //send current product details to presenter -> listFragment -> detailFragment
     override fun onClick(p0: View?) {
-        TODO("pasang on click untuk detail item")
+        this.presenter.goDetailsPage(this.currentProd)
     }
 }
