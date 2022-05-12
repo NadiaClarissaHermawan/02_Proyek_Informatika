@@ -64,6 +64,7 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
 
     //function untuk update arraylist yang ada di adapter
     fun update(prods: ArrayList<ProductDetails>){
+        this.prods = ArrayList()
         this.prods.addAll(prods)
         this.notifyDataSetChanged()
     }
