@@ -18,20 +18,28 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     private lateinit var listFragment : ListFragment
     private var dataOffset : Int = 0
 
+    //view constructor
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View?{
+        //bind
         this.gridBinding=ProductGridFragmentBinding.inflate(inflater, container, false)
 
+        //declare presenter, adapter
         this.presenter= GridPresenter(this)
         this.adapter=GridAdapter(requireActivity(), this.presenter)
         this.gridBinding.lstProducts.adapter = this.adapter
 
+        //set on click listener
         this.gridBinding.layoutType.setOnClickListener(this::onClick)
         this.gridBinding.buttonLoadMore.setOnClickListener(this::onClick)
 
-        presenter.updateGrid(this.dataOffset)
+        //add first 5 products
+        presenter.updateGrid(this.dataOffset, this.dataOffset+4)
 
-        //TODO(bikin listener untuk update product setelah list di update)
-
+        //sync product with list layout (listener)
+        this.parentFragmentManager.setFragmentResultListener(Page.SYNC_LISTENER, this) {
+                _, result ->
+            this.callUpdateList(result.getInt("target"))
+        }
 
         return this.gridBinding.root
     }
@@ -47,14 +55,20 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
 
     //untuk pindah page ke fragment list
     override fun onClick(view : View?) {
+        //change page
         if(view == this.gridBinding.layoutType){
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+        //load more
+        }else if(view == this.gridBinding.buttonLoadMore){
+            presenter.updateGrid(this.dataOffset, this.dataOffset+4)
         }
-        else if(view == this.gridBinding.buttonLoadMore){
-            presenter.updateGrid(this.dataOffset)
-        }
+    }
+
+    //sync product with list fragment
+    private fun callUpdateList(target : Int) {
+        this.presenter.updateGrid(this.dataOffset, target-1)
     }
 
     //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment

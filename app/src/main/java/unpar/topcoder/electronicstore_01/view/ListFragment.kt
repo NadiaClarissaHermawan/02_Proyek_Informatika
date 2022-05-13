@@ -55,6 +55,10 @@ class ListFragment : Fragment(), IList,View.OnClickListener {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.GRID_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+
+            var target = Bundle()
+            target.putInt("target", this.dataOffset)
+            parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
         //load more
         }else if(view == this.listBinding.buttonLoadMore) {
             this.callUpdateList()
