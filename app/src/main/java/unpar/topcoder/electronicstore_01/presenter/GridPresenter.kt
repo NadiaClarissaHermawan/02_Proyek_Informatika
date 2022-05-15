@@ -27,6 +27,7 @@ class GridPresenter (private var ui:GridInterface){
 
 
     fun goDetailsPage(currentProd : ProductDetails){
+        Log.d("currProd",currentProd.getNama())
         this.ui.moveToDetailsPage(currentProd)
     }
 

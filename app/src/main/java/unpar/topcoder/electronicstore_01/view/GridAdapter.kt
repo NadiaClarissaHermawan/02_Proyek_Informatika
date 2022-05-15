@@ -44,7 +44,6 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
         this.currentProduct = this.getItem(position)
         this.updateLayout(this.currentProduct)
 
-        convertView.setOnClickListener(this::onClick)
 
         return this.gridItemBinding.root
     }
@@ -56,6 +55,7 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
         this.gridItemBinding.productCondition.text = ""+this.currentProduct.getKondisi()+"%"
         this.gridItemBinding.productPrice.text = ""+this.currentProduct.getHarga()
         this.gridItemBinding.productImage.setImageResource(this.currentProduct.getImageSource())
+        this.gridItemBinding.root.setOnClickListener{this.presenter.goDetailsPage(currentProduct)}
     }
 
     override fun onClick(v: View?) {
