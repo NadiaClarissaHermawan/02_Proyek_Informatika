@@ -21,6 +21,16 @@
             android:orientation="vertical"
             android:background="@color/light_green"
             >
+            <Button
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+
+            />
+
 
             <ImageView
                 android:id="@+id/product_image"

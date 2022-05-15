@@ -16,6 +16,7 @@ import unpar.topcoder.electronicstore_01.presenter.GridPresenter
 class GridAdapter (private var activity: Activity, private var presenter: GridPresenter): BaseAdapter(), View.OnClickListener{
     private lateinit var gridItemBinding: ProductGridEntryBinding
     private var prods: MutableList<ProductDetails> = ArrayList()
+    private lateinit var currentProduct: ProductDetails
 
     override fun getCount(): Int {
         return this.prods.size
@@ -40,22 +41,25 @@ class GridAdapter (private var activity: Activity, private var presenter: GridPr
             this.gridItemBinding= convertView.tag as ProductGridEntryBinding
         }
 
-        val currentProduct = this.getItem(position)
-        this.updateLayout(currentProduct)
+        this.currentProduct = this.getItem(position)
+        this.updateLayout(this.currentProduct)
+
+        convertView.setOnClickListener(this::onClick)
+
         return this.gridItemBinding.root
     }
 
     //function update layout (buat recycle)
     fun updateLayout(currentProduct : ProductDetails){
-        this.gridItemBinding.productName.text=currentProduct.getNama()
-        this.gridItemBinding.productCategory.text=""+currentProduct.getKategori()
-        this.gridItemBinding.productCondition.text = ""+currentProduct.getKondisi()+"%"
-        this.gridItemBinding.productPrice.text = ""+currentProduct.getHarga()
-        this.gridItemBinding.productImage.setImageResource(currentProduct.getImageSource())
+        this.gridItemBinding.productName.text=this.currentProduct.getNama()
+        this.gridItemBinding.productCategory.text=""+this.currentProduct.getKategori()
+        this.gridItemBinding.productCondition.text = ""+this.currentProduct.getKondisi()+"%"
+        this.gridItemBinding.productPrice.text = ""+this.currentProduct.getHarga()
+        this.gridItemBinding.productImage.setImageResource(this.currentProduct.getImageSource())
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        this.presenter.goDetailsPage(this.currentProduct)
     }
 
     //function untuk update arraylist yang ada di adapter

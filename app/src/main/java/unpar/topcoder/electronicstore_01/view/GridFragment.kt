@@ -10,6 +10,7 @@ import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.ProductGridFragmentBinding
 import unpar.topcoder.electronicstore_01.model.*
 import unpar.topcoder.electronicstore_01.presenter.GridPresenter
+import org.parceler.Parcels
 
 class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     private lateinit var gridBinding: ProductGridFragmentBinding
@@ -62,5 +63,18 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         this.adapter.update(prods)
         this.dataOffset = newDataOffset
         this.listFragment.updateList(prods,newDataOffset)
+    }
+
+    override fun moveToDetailsPage(currentProd: ProductDetails) {
+        //kirim data clicked product
+        var product = Bundle()
+        product.putParcelable("product", Parcels.wrap(currentProd))
+        product.putInt("layout", Page.GRID_PAGE)
+        parentFragmentManager.setFragmentResult(Page.CHANGE_TO_DETAILS_LISTENER, product)
+
+        //change page
+        var pg = Bundle()
+        pg.putInt(Page.PAGE, Page.DETAIL_PAGE)
+        parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
 }
