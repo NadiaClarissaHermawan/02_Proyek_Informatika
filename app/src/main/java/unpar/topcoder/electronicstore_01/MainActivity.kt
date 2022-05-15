@@ -39,23 +39,8 @@ class MainActivity : AppCompatActivity() {
         //initialize frag manager & set main page
         this.fragmentManager = supportFragmentManager
 
+        //set main page
         this.changePage(Page.LIST_PAGE)
-
-        //updating list fragment abis grid terupdate ATAU updating grid fragment abis list ke update
-//        this.fragmentManager.setFragmentResultListener(Update.UPDATE, this) {
-//            _, result ->
-//            var type = result.getString(Update.TYPE)
-//            var offset = result.getInt(Update.OFFSET)
-//            if(type==Update.GRID) {
-//                //ceritanya disini mau dibuat bundle yg isinya offset yg dikirim ke grid fragment tapi masih belum dicoba
-//                var bundle : Bundle = Bundle()
-//                bundle.putInt(Update.UPDATE,offset)
-//                this.fragmentTransaction = this.fragmentManager.beginTransaction()
-//                this.gridFragment.setArguments(bundle)
-//            }else if(type==Update.LIST) {
-//
-//            }
-//        }
 
         //change page listener
         this.fragmentManager.setFragmentResultListener(Page.CHANGE_PAGE_LISTENER, this) {
@@ -63,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             var page = result.getInt(Page.PAGE)
             this.changePage(page)
         }
-
     }
 
     //method untuk ganti halaman

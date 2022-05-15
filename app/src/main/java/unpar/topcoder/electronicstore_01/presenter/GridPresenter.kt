@@ -8,27 +8,23 @@ import unpar.topcoder.electronicstore_01.view.GridInterface
 class GridPresenter (private var ui:GridInterface){
     private var prods : ArrayList<ProductDetails> = ArrayList() //array berisi semua produk di database
 
-
-    fun updateGrid(offset : Int) {
+    //load data from AllProducts
+    fun updateGrid(offset : Int, target: Int) {
         var dataOffset = offset
         val prods : ArrayList<ProductDetails> = ArrayList()
         if(dataOffset < AllProducts.products.size) {
-            for(i in dataOffset..(dataOffset + 4)) {
+            for(i in dataOffset..target) {
                 if(i < AllProducts.products.size) {
-                    if(i == dataOffset + 4){
-                        dataOffset = i + 1
-                    }
                     prods.add(AllProducts.products[i])
-
                 }else {
-                    dataOffset = i + 1
                     break
                 }
             }
             this.prods.addAll(prods)
-            this.ui.updateGrid(this.prods, dataOffset)
+            this.ui.updateGrid(this.prods, target+1)
         }
     }
+
 
     fun goDetailsPage(currentProd : ProductDetails){
         this.ui.moveToDetailsPage(currentProd)
