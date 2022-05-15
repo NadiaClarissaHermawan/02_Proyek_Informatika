@@ -11,7 +11,7 @@ import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 
 //fragment
-class DetailFragment : Fragment(){
+class DetailFragment : Fragment(), View.OnClickListener{
     private lateinit var detailBinding : ProductDetailFragmentBinding
     private var layout : Int = Page.LIST_PAGE
 
@@ -26,6 +26,9 @@ class DetailFragment : Fragment(){
             this.layout = result.getInt("layout")
             this.updateLayout(Parcels.unwrap<Any>(result.getParcelable("product")) as ProductDetails)
         }
+
+        this.detailBinding.back.setOnClickListener(this::onClick)
+
         return this.detailBinding.root
     }
 
@@ -47,5 +50,13 @@ class DetailFragment : Fragment(){
         this.detailBinding.productImage.setImageResource(currentProduct.getImageSource())
         this.detailBinding.productName.text = currentProduct.getNama()
         this.detailBinding.productPrice.text = "Rp "+currentProduct.getHarga()
+    }
+
+    override fun onClick(view: View?) {
+        if(view==this.detailBinding.back) {
+            var pg = Bundle()
+            pg.putInt(Page.PAGE, this.layout)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+        }
     }
 }
