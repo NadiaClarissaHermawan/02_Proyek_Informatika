@@ -8,10 +8,9 @@ import unpar.topcoder.electronicstore_01.databinding.ProductListEntryBinding
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 
-class ListAdapter (private var activity : Activity, private var presenter : ListPresenter) : BaseAdapter(), View.OnClickListener{
+class ListAdapter (private var activity : Activity, private var presenter : ListPresenter) : BaseAdapter(){
     private lateinit var listItemBinding : ProductListEntryBinding
     private var prods : ArrayList<ProductDetails> = ArrayList()
-    private lateinit var currentProd: ProductDetails
 
     override fun getCount(): Int {
         return this.prods.size
@@ -37,11 +36,8 @@ class ListAdapter (private var activity : Activity, private var presenter : List
         }
 
         //take current prod & show the details to layout
-        this.currentProd = this.getItem(p0)
-        this.updateLayout()
-
-        //set list item's on click listener
-        this.listItemBinding.root.setOnClickListener(this::onClick)
+        var currproduct : ProductDetails = this.getItem(p0)
+        this.updateLayout(currproduct)
 
         return this.listItemBinding.root
     }
@@ -54,15 +50,12 @@ class ListAdapter (private var activity : Activity, private var presenter : List
     }
 
     //show prods details to layout
-    fun updateLayout() {
-        this.listItemBinding.productName.text = this.currentProd.getNama()
-        this.listItemBinding.productCategory.text = ""+this.currentProd.getKategori()
-        this.listItemBinding.productCondition.text = ""+this.currentProd.getKondisi()+"%"
-        this.listItemBinding.productPrice.text = "Rp "+this.currentProd.getHarga()
-    }
-
-    //send current product details to presenter -> listFragment -> detailFragment
-    override fun onClick(p0: View?) {
-        this.presenter.goDetailsPage(this.currentProd)
+    fun updateLayout(currProduct : ProductDetails) {
+        this.listItemBinding.productName.text = currProduct.getNama()
+        this.listItemBinding.productCategory.text = ""+currProduct.getKategori()
+        this.listItemBinding.productCondition.text = ""+currProduct.getKondisi()+"%"
+        this.listItemBinding.productPrice.text = "Rp "+currProduct.getHarga()
+        //set item's click listener
+        this.listItemBinding.root.setOnClickListener{this.presenter.goDetailsPage(currProduct)}
     }
 }
