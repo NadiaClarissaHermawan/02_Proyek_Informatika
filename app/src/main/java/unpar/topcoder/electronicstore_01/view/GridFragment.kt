@@ -30,7 +30,8 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         this.gridBinding.lstProducts.adapter = this.adapter
 
         //set on click listener
-        this.gridBinding.layoutType.setOnClickListener(this::onClick)
+        this.gridBinding.layoutTypeGrid.setOnClickListener(this::onClick)
+        this.gridBinding.layoutTypeList.setOnClickListener(this::onClick)
         this.gridBinding.buttonLoadMore.setOnClickListener(this::onClick)
 
         //add first 5 products
@@ -57,12 +58,16 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     //untuk pindah page ke fragment list
     override fun onClick(view : View?) {
         //change page
-        if(view == this.gridBinding.layoutType){
+        if(view == this.gridBinding.layoutTypeList){
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
         //load more
-        }else if(view == this.gridBinding.buttonLoadMore){
+        }
+        else if(view == this.gridBinding.layoutTypeGrid){
+
+        }
+        else if(view == this.gridBinding.buttonLoadMore){
             presenter.updateGrid(this.dataOffset, this.dataOffset+4)
         }
     }

@@ -32,13 +32,24 @@
             android:background="@color/light_green"
         />
         <Button
-            android:id="@+id/layout_type"
+            android:id="@+id/layout_type_grid"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:background="@color/light_green"
+            android:text="Grid"
+            android:textSize="10dp"
+            />
+        <Button
+            android:id="@+id/layout_type_list"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:background="@color/light_green"
             android:text="List"
+            android:textSize="10dp"
             />
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
     </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,31 +14,55 @@
         android:orientation="vertical"
         android:background="@color/cream"
         >
+
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:orientation="vertical"
             android:background="@color/light_green"
-            >
+            android:orientation="vertical"
+           >
+
             <Button
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
+                android:text="Back"
 
-            />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-            <ImageView
-                android:id="@+id/product_image"
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carouselView"
                 android:layout_width="600px"
                 android:layout_height="600px"
                 android:layout_centerInParent="true"
                 android:layout_weight="0.1"
-                />
+                app:fillColor="@color/light_green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pageColor="#00000000"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="@color/light_green"
+                app:strokeWidth="1dp" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/product_image"-->
+<!--                android:layout_width="600px"-->
+<!--                android:layout_height="600px"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_weight="0.1"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
         </RelativeLayout>
         <LinearLayout
@@ -93,4 +117,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

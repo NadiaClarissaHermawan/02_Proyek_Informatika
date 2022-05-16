@@ -29,7 +29,8 @@ class ListFragment : Fragment(), IList,View.OnClickListener {
         this.listBinding.lstProducts.adapter = this.adapter
 
         //set click listener
-        this.listBinding.layoutType.setOnClickListener(this::onClick)
+        this.listBinding.layoutTypeGrid.setOnClickListener(this::onClick)
+        this.listBinding.layoutTypeList.setOnClickListener(this::onClick)
         this.listBinding.buttonLoadMore.setOnClickListener(this::onClick)
 
         //initial products
@@ -51,7 +52,7 @@ class ListFragment : Fragment(), IList,View.OnClickListener {
     //onclick listener method
     override fun onClick(view: View?) {
         //ganti ke grid frag
-        if(view == this.listBinding.layoutType){
+        if(view == this.listBinding.layoutTypeGrid){
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.GRID_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
@@ -60,7 +61,11 @@ class ListFragment : Fragment(), IList,View.OnClickListener {
             target.putInt("target", this.dataOffset)
             parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
         //load more
-        }else if(view == this.listBinding.buttonLoadMore) {
+        }
+        else if(view == this.listBinding.layoutTypeList){
+
+        }
+        else if(view == this.listBinding.buttonLoadMore) {
             this.callUpdateList()
         }
     }
