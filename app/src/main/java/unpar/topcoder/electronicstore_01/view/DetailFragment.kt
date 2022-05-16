@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.synnapps.carouselview.ImageListener
 import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.ProductDetailFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Page
@@ -14,7 +15,7 @@ import unpar.topcoder.electronicstore_01.model.ProductDetails
 class DetailFragment : Fragment(), View.OnClickListener{
     private lateinit var detailBinding : ProductDetailFragmentBinding
     private var layout : Int = Page.LIST_PAGE
-
+    //private var imageArray:ArrayList<Int> =  ArrayList()
     //constructor
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
         //bind layout
@@ -47,10 +48,22 @@ class DetailFragment : Fragment(), View.OnClickListener{
         this.detailBinding.productCategory.text = currentProduct.getKategori()
         this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()
         //this.detailBinding.productDescription.text = currentProduct.getDesc()
-        this.detailBinding.productImage.setImageResource(currentProduct.getImageSource())
+        //this.detailBinding.productImage.setImageResource(currentProduct.getImageSource())
         this.detailBinding.productName.text = currentProduct.getNama()
         this.detailBinding.productPrice.text = "Rp "+currentProduct.getHarga()
+        //untuk ngeset image carousel
+        var imageArray:ArrayList<Int> =  ArrayList()
+        imageArray.add(currentProduct.getImageSource())
+        imageArray.add(currentProduct.getImageSource2())
+        imageArray.add(currentProduct.getImageSource3())
+        var imageListener = ImageListener {position, imageView ->  imageView.setImageResource(imageArray[position])}
+        this.detailBinding.carouselView.setImageListener(imageListener)
+        this.detailBinding.carouselView.pageCount = imageArray.size
+
     }
+
+//    var imageListener =
+//        ImageListener { position, imageView -> imageView.setImageResource(imageArray.get(position)) }
 
     override fun onClick(view: View?) {
         if(view==this.detailBinding.back) {

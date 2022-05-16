@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 //model including constructor
 @Parcelize
-class ProductDetails (private var nama : String, private var kondisi : Int, private var kategori : String, private var harga : String, private var imageSource:Int) : Parcelable {
+class ProductDetails (private var nama : String, private var kondisi : Int, private var kategori : String, private var harga : String, private var imageSource:Int, private var imageSource2:Int, private var imageSource3:Int) : Parcelable {
     fun getNama () : String {
         return this.nama
     }
@@ -25,4 +25,13 @@ class ProductDetails (private var nama : String, private var kondisi : Int, priv
     fun getImageSource() : Int {
         return this.imageSource
     }
+
+    fun getImageSource2() : Int {
+        return this.imageSource2
+    }
+
+    fun getImageSource3() : Int {
+        return this.imageSource3
+    }
+
 }
