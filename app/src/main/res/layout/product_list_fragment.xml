@@ -24,6 +24,8 @@
             android:background="@drawable/border"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
+            android:hint="Search product name.."
+            android:textSize="13sp"
         />
         <Spinner
             android:id="@+id/dropdown_category"
@@ -64,24 +66,28 @@
         android:background="@color/dark_green"
         >
         <TextView
+            android:id="@+id/product_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.33"
             android:text="Product Name"
             />
         <TextView
+            android:id="@+id/product_category"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.17"
             android:text="Category"
             />
         <TextView
+            android:id="@+id/product_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:text="Price"
             />
         <TextView
+            android:id="@+id/product_condition"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
