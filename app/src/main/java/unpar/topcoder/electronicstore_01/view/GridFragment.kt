@@ -1,10 +1,14 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.ProductGridFragmentBinding
@@ -12,7 +16,7 @@ import unpar.topcoder.electronicstore_01.model.*
 import unpar.topcoder.electronicstore_01.presenter.GridPresenter
 import org.parceler.Parcels
 
-class GridFragment : Fragment(), View.OnClickListener, GridInterface{
+class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterView.OnItemSelectedListener{
     private lateinit var gridBinding: ProductGridFragmentBinding
     private lateinit var presenter: GridPresenter
     private lateinit var adapter : GridAdapter
@@ -28,6 +32,12 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         this.presenter= GridPresenter(this)
         this.adapter=GridAdapter(requireActivity(), this.presenter)
         this.gridBinding.lstProducts.adapter = this.adapter
+
+        //setup spinner category
+        this.setupSpinner()
+
+        //setup filter listener
+        this.setupFilter()
 
         //set on click listener
         this.gridBinding.layoutTypeGrid.setOnClickListener(this::onClick)
@@ -55,6 +65,28 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         }
     }
 
+    //setup spinner kategori
+    fun setupSpinner() {
+        val spinnr = this.gridBinding.dropdownCategory
+        val spinnerValues = arrayOf<String>("All", "Smartphone", "Tablet", "Watches", "Galaxy Buds")
+        val adapter: ArrayAdapter<*> = ArrayAdapter<Any>(requireContext(), R.layout.spinner_layout, spinnerValues)
+        adapter.setDropDownViewResource(R.layout.spinner_layout)
+        spinnr.adapter = adapter
+        spinnr.onItemSelectedListener = this
+    }
+
+    //setup text filter listener
+    fun setupFilter() {
+        this.gridBinding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                val keyword = gridBinding.searchBar.text.toString()
+                presenter.search(keyword)
+            }
+        })
+    }
+
     //untuk pindah page ke fragment list
     override fun onClick(view : View?) {
         //change page
@@ -80,8 +112,11 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
     //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
     override fun updateGrid(prods: ArrayList<ProductDetails>,newDataOffset : Int) {
         this.adapter.update(prods)
-        this.dataOffset = newDataOffset
-        this.listFragment.updateList(prods,newDataOffset)
+        if (newDataOffset != -1 ) {
+            this.dataOffset = newDataOffset
+        }
+        //TODO (SYNC filter nama & category ke list fragment)
+        this.listFragment.updateList(prods, this.dataOffset)
     }
 
     override fun moveToDetailsPage(currentProd: ProductDetails) {
@@ -96,4 +131,12 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface{
         pg.putInt(Page.PAGE, Page.DETAIL_PAGE)
         parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
+
+    //listener untuk category spinner
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        this.presenter.changeCategory(p2-1, -1)
+    }
+
+    //do nothing
+    override fun onNothingSelected(p0: AdapterView<*>?) {}
 }
