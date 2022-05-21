@@ -81,7 +81,8 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
                 val keyword = listBinding.searchBar.text.toString()
-                presenter.search(keyword)
+                val category = listBinding.dropdownCategory.selectedItemPosition
+                presenter.changeCategoryFilter(category-1, dataOffset, keyword)
             }
         })
     }
@@ -163,7 +164,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
     //select listener untuk spinner
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategory(p2-1, this.dataOffset)
+        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.listBinding.searchBar.text.toString())
     }
 
     //do nothing

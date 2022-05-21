@@ -38,51 +38,36 @@ class ListPresenter (private val ui : IList) {
         this.ui.moveToDetailsPage(currentProd)
     }
 
-    //change category
-    fun changeCategory (selectedCategory : Int, dataOffset : Int) {
-        //all
-        if (selectedCategory == -1) {
-            this.updateList(-1)
-        } else {
-            val result = ArrayList<ProductDetails>()
-            val size = AllProducts.products.size
-            var selection: String = ""
-
-            // Smartphone
-            if (selectedCategory == 0) {
-                selection = ProductCode.SMARTPHONE
-            // Tablet
-            } else if (selectedCategory == 1) {
-                selection = ProductCode.TABLET
-            // Watches
-            } else if (selectedCategory == 2) {
-                selection = ProductCode.WATCHES
-            // Galaxy buds
-            } else if (selectedCategory == 3) {
-                selection = ProductCode.GALAXYBUDS
-            }
-
-            //loop ambil data sesuai kategori
-            for (i in 0..(size - 1)) {
-                if (AllProducts.products[i].getKategori() == selection) {
-                    result.add(AllProducts.products[i])
-                }
-            }
-            this.ui.updateList(result, dataOffset)
-        }
-    }
-
-    //filter nama produk
-    fun search (keyword : String) {
+    //change category & filter sync
+    fun changeCategoryFilter (selectedCategory : Int, dataOffset : Int, filter : String) {
         val result = ArrayList<ProductDetails>()
         val size = AllProducts.products.size
 
-        for (i in 0..(size - 1)) {
-            if (AllProducts.products[i].getNama().contains(keyword, ignoreCase = true)) {
-                result.add(AllProducts.products[i])
+        //all
+        if (selectedCategory == -1) {
+            for (i in 0..dataOffset-1) {
+                if (AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+            }
+        } else {
+            var selection: String = ""
+
+            // Smartphone
+            if (selectedCategory == 0) selection = ProductCode.SMARTPHONE
+            // Tablet
+            else if (selectedCategory == 1) selection = ProductCode.TABLET
+            // Watches
+            else if (selectedCategory == 2) selection = ProductCode.WATCHES
+            // Galaxy buds
+            else if (selectedCategory == 3) selection = ProductCode.GALAXYBUDS
+
+            //loop ambil data sesuai kategori
+            for (i in 0..(size - 1)) {
+                if (AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
+                    result.add(AllProducts.products[i])
+                }
             }
         }
-        this.ui.updateList(result, -1)
+        this.ui.updateList(result, dataOffset)
     }
 
     //sorting

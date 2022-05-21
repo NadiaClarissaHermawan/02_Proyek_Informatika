@@ -36,7 +36,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         //setup spinner category
         this.setupSpinner()
 
-        //setup filter listener
+        //setup filter
         this.setupFilter()
 
         //set on click listener
@@ -82,7 +82,8 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
                 val keyword = gridBinding.searchBar.text.toString()
-                presenter.search(keyword)
+                val category = gridBinding.dropdownCategory.selectedItemPosition
+                presenter.changeCategoryFilter(category-1, dataOffset, keyword)
             }
         })
     }
@@ -94,12 +95,9 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
-        //load more
-        }
-        else if(view == this.gridBinding.layoutTypeGrid){
 
-        }
-        else if(view == this.gridBinding.buttonLoadMore){
+        //load more
+        }else if(view == this.gridBinding.buttonLoadMore){
             presenter.updateGrid(this.dataOffset, this.dataOffset+4)
         }
     }
@@ -112,11 +110,8 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
     override fun updateGrid(prods: ArrayList<ProductDetails>,newDataOffset : Int) {
         this.adapter.update(prods)
-        if (newDataOffset != -1 ) {
-            this.dataOffset = newDataOffset
-        }
-        //TODO (SYNC filter nama & category ke list fragment)
-        this.listFragment.updateList(prods, this.dataOffset)
+        this.dataOffset = newDataOffset
+        this.listFragment.updateList(prods,newDataOffset)
     }
 
     override fun moveToDetailsPage(currentProd: ProductDetails) {
@@ -132,9 +127,8 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
 
-    //listener untuk category spinner
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategory(p2-1, -1)
+        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.gridBinding.searchBar.text.toString())
     }
 
     //do nothing
