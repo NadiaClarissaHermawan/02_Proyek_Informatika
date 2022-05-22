@@ -74,6 +74,14 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         spinnr.onItemSelectedListener = this
     }
 
+    //select listener untuk spinner
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.listBinding.searchBar.text.toString())
+    }
+
+    //do nothing
+    override fun onNothingSelected(p0: AdapterView<*>?) { }
+
     //setup text filter listener
     fun setupFilter() {
         this.listBinding.searchBar.addTextChangedListener(object : TextWatcher {
@@ -89,7 +97,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
     //onclick listener method
     override fun onClick(view: View?) {
-        //ganti ke grid frag
+        //ganti ke grid frag & sync product
         if (view == this.listBinding.layoutTypeGrid) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.GRID_PAGE)
@@ -145,6 +153,14 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         presenter.changeCategoryFilter(category-1, dataOffset, keyword)
     }
 
+    //sync product from grid fragment
+    fun syncList (newDataOffset: Int, category : Int, keyword : String) {
+        this.dataOffset = newDataOffset
+        this.listBinding.dropdownCategory.setSelection(category)
+        this.listBinding.searchBar.setText(keyword)
+        this.callUpdateList()
+    }
+
     //salurkan updated product list dari presenter ke adapter untuk ditampilkan
     override fun updateList(products: ArrayList<ProductDetails>, newDataOffset : Int) {
         this.adapter.updateList(products)
@@ -166,12 +182,4 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         pg.putInt(Page.PAGE, Page.DETAIL_PAGE)
         parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
-
-    //select listener untuk spinner
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.listBinding.searchBar.text.toString())
-    }
-
-    //do nothing
-    override fun onNothingSelected(p0: AdapterView<*>?) { }
 }
