@@ -50,7 +50,9 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         //sync product with list layout (listener)
         this.parentFragmentManager.setFragmentResultListener(Page.SYNC_LISTENER, this) {
                 _, result ->
-            this.callUpdateList(result.getInt("target"))
+            this.gridBinding.dropdownCategory.setSelection(result.getInt("category"))
+            this.gridBinding.searchBar.setText(result.getString("keyword").toString())
+            this.callUpdateList(result.getInt("target"), result.getInt("category"), result.getString("keyword").toString())
         }
 
         return this.gridBinding.root
@@ -98,13 +100,16 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
 
         //load more
         }else if(view == this.gridBinding.buttonLoadMore){
-            presenter.updateGrid(this.dataOffset, this.dataOffset+4)
+            val keyword = gridBinding.searchBar.text.toString()
+            val category = gridBinding.dropdownCategory.selectedItemPosition
+            this.callUpdateList(this.dataOffset + 5, category, keyword)
         }
     }
 
-    //sync product with list fragment
-    private fun callUpdateList(target : Int) {
-        this.presenter.updateGrid(this.dataOffset, target-1)
+    //sync product with list fragment, then sync filter & category
+    private fun callUpdateList(target : Int, category : Int, keyword : String) {
+        this.presenter.updateGrid(0, target-1)
+        this.presenter.changeCategoryFilter(category-1, this.dataOffset, keyword)
     }
 
     //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment

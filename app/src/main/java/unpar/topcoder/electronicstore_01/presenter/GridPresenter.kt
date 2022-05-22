@@ -60,6 +60,8 @@ class GridPresenter (private var ui:GridInterface){
                 }
             }
         }
+        this.prods.clear()
+        this.prods.addAll(result)
         this.ui.updateGrid(result, dataOffset)
     }
 }

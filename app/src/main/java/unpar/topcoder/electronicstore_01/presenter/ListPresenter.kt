@@ -61,13 +61,15 @@ class ListPresenter (private val ui : IList) {
             else if (selectedCategory == 3) selection = ProductCode.GALAXYBUDS
 
             //loop ambil data sesuai kategori
-            for (i in 0..(size - 1)) {
+            for (i in 0..dataOffset-1) {
                 if (AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
                 }
             }
         }
-        this.ui.updateList(result, dataOffset)
+        this.products.clear()
+        this.products.addAll(result)
+        this.ui.updateList(this.products, dataOffset)
     }
 
     //sorting

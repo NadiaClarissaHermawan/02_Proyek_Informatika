@@ -97,6 +97,8 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
             var target = Bundle()
             target.putInt("target", this.dataOffset)
+            target.putInt("category", this.listBinding.dropdownCategory.selectedItemPosition)
+            target.putString("keyword", this.listBinding.searchBar.text.toString())
             parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
 
         //load more
@@ -135,9 +137,12 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         }
     }
 
-    //load & update product list
+    //load & update product list, then sync with filters
     private fun callUpdateList() {
         this.presenter.updateList(this.dataOffset)
+        val keyword = listBinding.searchBar.text.toString()
+        val category = listBinding.dropdownCategory.selectedItemPosition
+        presenter.changeCategoryFilter(category-1, dataOffset, keyword)
     }
 
     //salurkan updated product list dari presenter ke adapter untuk ditampilkan
