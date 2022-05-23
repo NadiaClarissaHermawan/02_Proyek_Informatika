@@ -38,8 +38,8 @@ class GridPresenter (private var ui:GridInterface){
         //all
         if (selectedCategory == -1) {
             for (i in 0..dataOffset-1) {
-                if (i < size && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
-                else break
+                if (i < size &&  AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+                else if (i > size) break
             }
         } else {
             var selection: String = ""
@@ -57,7 +57,7 @@ class GridPresenter (private var ui:GridInterface){
             for (i in 0..dataOffset-1) {
                 if (i < size && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
-                } else break
+                } else if (i > size) break
             }
         }
         this.prods.clear()

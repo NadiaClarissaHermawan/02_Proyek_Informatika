@@ -36,8 +36,8 @@ class ListPresenter (private val ui : IList) {
         //all
         if (selectedCategory == -1) {
             for (i in 0..dataOffset-1) {
-                if (i < size && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
-                else break
+                if (i < size && AllProducts.products[i].getNama().contains(filter, ignoreCase = true) ) result.add(AllProducts.products[i])
+                else if (i > size) break
             }
         } else {
             var selection: String = ""
@@ -50,12 +50,15 @@ class ListPresenter (private val ui : IList) {
             else if (selectedCategory == 2) selection = ProductCode.WATCHES
             // Galaxy buds
             else if (selectedCategory == 3) selection = ProductCode.GALAXYBUDS
-
+            
             //loop ambil data sesuai kategori
-            for (i in 0..dataOffset-1) {
-                if (i < size  && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
+            //Log.e("DEBUGGG", "changeCategoryFilter: target inclusive = "+(dataOffset-1) + " size = "+size)
+            for (i in 0..(dataOffset-1)) {
+//                Log.e("DEBUG FILTER", "changeCategoryFilter: i = "+i )
+//                Log.e("DEBUG 3", "i < size = "+ (i < size) + " category = "+ (AllProducts.products[i].getKategori() == selection).toString() +" filter = " + (AllProducts.products[i].getNama().contains(filter, ignoreCase = true)).toString() )
+                if (i < size && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
-                } else break
+                } else if (i > size) break
             }
         }
         this.products.clear()
