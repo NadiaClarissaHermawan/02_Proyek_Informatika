@@ -93,13 +93,13 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     //untuk pindah page ke fragment list
     override fun onClick(view : View?) {
         //change to list fragment & sync products
-        if(view == this.gridBinding.layoutTypeList){
+        if (view == this.gridBinding.layoutTypeList) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
             this.listFragment.syncList(this.dataOffset, this.gridBinding.dropdownCategory.selectedItemPosition, this.gridBinding.searchBar.text.toString() )
         //load more
-        }else if(view == this.gridBinding.buttonLoadMore){
+        } else if (view == this.gridBinding.buttonLoadMore) {
             val keyword = gridBinding.searchBar.text.toString()
             val category = gridBinding.dropdownCategory.selectedItemPosition
             this.callUpdateList(this.dataOffset + 5, category, keyword)
