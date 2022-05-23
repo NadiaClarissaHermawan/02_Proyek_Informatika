@@ -52,7 +52,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
                 _, result ->
             this.gridBinding.dropdownCategory.setSelection(result.getInt("category"))
             this.gridBinding.searchBar.setText(result.getString("keyword").toString())
-            this.callUpdateList(result.getInt("target"), result.getInt("category"), result.getString("keyword").toString())
+            this.callUpdateGrid(result.getInt("target"), result.getInt("category"), result.getString("keyword").toString())
         }
 
         return this.gridBinding.root
@@ -93,23 +93,23 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     //untuk pindah page ke fragment list
     override fun onClick(view : View?) {
         //change to list fragment & sync products
-        if(view == this.gridBinding.layoutTypeList){
+        if (view == this.gridBinding.layoutTypeList) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
             this.listFragment.syncList(this.dataOffset, this.gridBinding.dropdownCategory.selectedItemPosition, this.gridBinding.searchBar.text.toString() )
         //load more
-        }else if(view == this.gridBinding.buttonLoadMore){
+        } else if (view == this.gridBinding.buttonLoadMore) {
             val keyword = gridBinding.searchBar.text.toString()
             val category = gridBinding.dropdownCategory.selectedItemPosition
-            this.callUpdateList(this.dataOffset + 5, category, keyword)
+            this.callUpdateGrid(this.dataOffset + 5, category, keyword)
         }
     }
 
     //sync product with list fragment, then sync filter & category
-    private fun callUpdateList(target : Int, category : Int, keyword : String) {
-        this.presenter.updateGrid(0, target-1)
-        this.presenter.changeCategoryFilter(category-1, this.dataOffset, keyword)
+    private fun callUpdateGrid(target : Int, category : Int, keyword : String) {
+        this.presenter.updateGrid(this.dataOffset, target-1)
+        this.presenter.changeCategoryFilter(category-1, target, keyword)
     }
 
     //salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
