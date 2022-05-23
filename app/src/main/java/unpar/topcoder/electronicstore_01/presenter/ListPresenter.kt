@@ -10,25 +10,20 @@ class ListPresenter (private val ui : IList) {
     private var products : ArrayList<ProductDetails> = ArrayList()
 
     //load & update produk u/ disalurkan ke UI (fragment)
-    fun updateList (offset : Int) {
-        Log.e("DEBUG", "offset: "+offset )
+    fun updateList(offset : Int, target: Int) {
         var dataOffset = offset
         val prods : ArrayList<ProductDetails> = ArrayList()
-        if (dataOffset < AllProducts.products.size && offset != -1) {
-            for (i in dataOffset..(dataOffset + 4)) {
-                if (i < AllProducts.products.size) {
-                    if (i == dataOffset + 4){
-                        dataOffset = i + 1
-                    }
+        if(dataOffset < AllProducts.products.size && offset != -1) {
+            for(i in dataOffset..target) {
+                if(i < AllProducts.products.size) {
                     prods.add(AllProducts.products[i])
-                } else {
-                    dataOffset = i
+                }else {
                     break
                 }
             }
             this.products.addAll(prods)
-            this.ui.updateList(this.products, dataOffset)
-        } else if (offset == - 1) {
+            this.ui.updateList(this.products, target+1)
+        } else if (offset == -1) {
             this.ui.updateList(this.products, dataOffset)
         }
     }

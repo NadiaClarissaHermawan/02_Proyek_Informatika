@@ -51,7 +51,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         this.listBinding.productCondition.setOnClickListener(this::onClick)
 
         //initial products
-        this.callUpdateList()
+        this.callUpdateList(this.dataOffset, this.dataOffset + 4)
 
         return this.listBinding.root
     }
@@ -111,7 +111,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
         //load more
         } else if (view == this.listBinding.buttonLoadMore) {
-            this.callUpdateList()
+            this.callUpdateList(this.dataOffset, this.dataOffset + 4)
 
         //sort product's name
         } else if (view == this.listBinding.productName) {
@@ -146,19 +146,19 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
     }
 
     //load & update product list, then sync with filters
-    private fun callUpdateList() {
-        this.presenter.updateList(this.dataOffset)
+    private fun callUpdateList(offset : Int, target : Int) {
+        this.presenter.updateList(offset, target)
         val keyword = listBinding.searchBar.text.toString()
         val category = listBinding.dropdownCategory.selectedItemPosition
-        presenter.changeCategoryFilter(category-1, dataOffset, keyword)
+        this.presenter.changeCategoryFilter(category-1, target + 1, keyword)
     }
 
     //sync product from grid fragment
     fun syncList (newDataOffset: Int, category : Int, keyword : String) {
-        this.dataOffset = newDataOffset
         this.listBinding.dropdownCategory.setSelection(category)
         this.listBinding.searchBar.setText(keyword)
-        this.callUpdateList()
+        this.callUpdateList(this.dataOffset, newDataOffset-1)
+        this.dataOffset = newDataOffset
     }
 
     //salurkan updated product list dari presenter ke adapter untuk ditampilkan
