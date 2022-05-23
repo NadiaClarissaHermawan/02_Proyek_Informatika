@@ -15,4 +15,7 @@
     <color name="dark_green">#97DBAE</color>
     <color name="cream_list">#FAFDD6</color>
 
+    <!--  Custom  -->
+    <color name="dark_blue">#160B57</color>
+
 </resources>
