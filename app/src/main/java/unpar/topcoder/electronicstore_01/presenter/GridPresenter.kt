@@ -54,7 +54,7 @@ class GridPresenter (private var ui:GridInterface){
             else if (selectedCategory == 3) selection = ProductCode.GALAXYBUDS
 
             //loop ambil data sesuai kategori
-            for (i in 0..(size - 1)) {
+            for (i in 0..dataOffset-1) {
                 if (AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
                 }
@@ -62,6 +62,6 @@ class GridPresenter (private var ui:GridInterface){
         }
         this.prods.clear()
         this.prods.addAll(result)
-        this.ui.updateGrid(result, dataOffset)
+        this.ui.updateGrid(this.prods, dataOffset)
     }
 }
