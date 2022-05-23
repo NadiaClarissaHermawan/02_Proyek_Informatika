@@ -50,7 +50,10 @@
                 app:radius="6dp"
                 app:slideInterval="3000"
                 app:strokeColor="@color/light_green"
-                app:strokeWidth="1dp" />
+                app:strokeWidth="1dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                />
 
 <!--            <ImageView-->
 <!--                android:id="@+id/product_image"-->
