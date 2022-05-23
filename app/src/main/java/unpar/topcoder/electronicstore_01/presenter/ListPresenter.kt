@@ -28,11 +28,6 @@ class ListPresenter (private val ui : IList) {
         }
     }
 
-    //send current product details to list Fragment -> DetailFragment
-    fun goDetailsPage (currentProd : ProductDetails){
-        this.ui.moveToDetailsPage(currentProd)
-    }
-
     //change category & filter sync
     fun changeCategoryFilter (selectedCategory : Int, dataOffset : Int, filter : String) {
         val result = ArrayList<ProductDetails>()
@@ -41,7 +36,8 @@ class ListPresenter (private val ui : IList) {
         //all
         if (selectedCategory == -1) {
             for (i in 0..dataOffset-1) {
-                if (AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+                if (i < size && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+                else break
             }
         } else {
             var selection: String = ""
@@ -57,9 +53,9 @@ class ListPresenter (private val ui : IList) {
 
             //loop ambil data sesuai kategori
             for (i in 0..dataOffset-1) {
-                if (AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
+                if (i < size  && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
-                }
+                } else break
             }
         }
         this.products.clear()
@@ -98,5 +94,10 @@ class ListPresenter (private val ui : IList) {
         this.products.clear()
         this.products.addAll(result)
         this.ui.updateList(this.products, -1)
+    }
+
+    //send current product details to list Fragment -> DetailFragment
+    fun goDetailsPage (currentProd : ProductDetails){
+        this.ui.moveToDetailsPage(currentProd)
     }
 }
