@@ -40,7 +40,7 @@ class GridPresenter (private var ui:GridInterface){
         if (selectedCategory == -1) {
             for (i in 0..dataOffset-1) {
                 Log.d("offset",i.toString())
-                if (AllProducts.products[i].getNama().contains(filter, ignoreCase = true) && i<28) result.add(AllProducts.products[i])
+                if (AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
             }
         } else {
             var selection: String = ""
