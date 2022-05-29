@@ -27,7 +27,6 @@ class GridPresenter (private var ui:GridInterface){
     }
 
     fun goDetailsPage(currentProd : ProductDetails){
-        Log.d("currProd",currentProd.getNama())
         this.ui.moveToDetailsPage(currentProd)
     }
 
@@ -39,8 +38,8 @@ class GridPresenter (private var ui:GridInterface){
         //all
         if (selectedCategory == -1) {
             for (i in 0..dataOffset-1) {
-                Log.d("offset",i.toString())
-                if (AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+                if (i < size &&  AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) result.add(AllProducts.products[i])
+                else if (i > size) break
             }
         } else {
             var selection: String = ""
@@ -56,9 +55,9 @@ class GridPresenter (private var ui:GridInterface){
 
             //loop ambil data sesuai kategori
             for (i in 0..dataOffset-1) {
-                if (AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
+                if (i < size && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
-                }
+                } else if (i > size) break
             }
         }
         this.prods.clear()

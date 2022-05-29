@@ -107,16 +107,15 @@
         android:layout_weight="0.1"
 
         >
+
         <Button
+            android:id="@+id/button_load_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Load More"
-            android:id="@+id/button_load_more"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@color/pink"
-            />
+            android:background="@drawable/dark_blue_btn"
+            android:text="Load More" />
     </RelativeLayout>
 
 </LinearLayout>
