@@ -17,5 +17,6 @@
 
     <!--  Custom  -->
     <color name="dark_blue">#160B57</color>
-
+    <color name="oker">#fcba03</color>
+    <color name="gray">#b3bcc4</color>
 </resources>
