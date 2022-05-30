@@ -14,9 +14,9 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/border"
         android:hint="Search product name.."
-        android:textColorHint="@color/gray"
         android:padding="8dp"
         android:textColor="@color/dark_blue"
+        android:textColorHint="@color/gray"
         android:textSize="13sp" />
 
     <Spinner
