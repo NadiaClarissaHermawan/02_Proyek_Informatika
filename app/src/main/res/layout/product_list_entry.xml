@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10px"
-    android:background="@color/cream_list"
-    >
+    android:background="@color/gray">
+
     <LinearLayout
         android:id="@+id/pencetan"
         android:layout_width="match_parent"
@@ -18,40 +18,40 @@
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.33"
+            android:layout_weight="0.3"
             android:layout_height="wrap_content"
             android:id="@+id/product_name"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue"
             android:text="PRODUCT NAME"
             >
         </TextView>
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.17"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:id="@+id/product_category"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue"
             android:text="CATEGORY"
             >
         </TextView>
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.19"
             android:layout_height="wrap_content"
             android:id="@+id/product_price"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue"
             android:text="PRICE"
             >
         </TextView>
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.16"
             android:layout_height="wrap_content"
             android:id="@+id/product_condition"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue"
             android:text="CONDITION"
             >
         </TextView>
