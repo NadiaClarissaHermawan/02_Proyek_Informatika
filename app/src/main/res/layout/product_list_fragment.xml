@@ -41,11 +41,11 @@
         android:id="@+id/dropdown_category"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
         android:layout_below="@id/top_bar"
-        android:background="@drawable/border" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/layout_type_list"
@@ -149,5 +149,4 @@
         android:textColor="@color/yellow"
         android:textSize="15sp" />
 </RelativeLayout>
-
 

@@ -28,14 +28,14 @@
             android:id="@+id/cart"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="295dp"
             android:drawableRight="@drawable/cart_icon" />
     </LinearLayout>
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="1000px"
+        android:layout_height="950px"
         android:layout_below="@id/top_bar"
         android:layout_centerHorizontal="true"
         android:layout_weight="0.1"
@@ -55,7 +55,7 @@
         android:layout_below="@id/carouselView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:textSize="30dp"
+        android:textSize="25sp"
         android:textColor="@color/dark_blue"
         android:textStyle="bold"/>
 
@@ -77,10 +77,10 @@
         android:layout_below="@id/add"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Product Name"
         android:textColor="@color/dark_blue"
-        android:textSize="25dp" />
+        android:textSize="23sp" />
 
     <LinearLayout
         android:id="@+id/perks"
@@ -99,7 +99,9 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textSize="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="15sp"
             android:textColor="@color/dark_blue"
             android:background="@drawable/background_text_view_kategori" />
 
@@ -110,8 +112,10 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_marginLeft="10dp"
-            android:textSize="20dp"
+            android:textSize="15sp"
             android:textColor="@color/dark_blue"
             android:background="@drawable/background_text_view_kategori" />
     </LinearLayout>
