@@ -46,9 +46,7 @@ class DetailFragment : Fragment(), View.OnClickListener{
     //update details produk ke layar
     fun updateLayout(currentProduct : ProductDetails){
         this.detailBinding.productCategory.text = currentProduct.getKategori()
-        this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()
-        //this.detailBinding.productDescription.text = currentProduct.getDesc()
-        //this.detailBinding.productImage.setImageResource(currentProduct.getImageSource())
+        this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()+"% new"
         this.detailBinding.productName.text = currentProduct.getNama()
         this.detailBinding.productPrice.text = "Rp "+currentProduct.getHarga()
         //untuk ngeset image carousel
@@ -61,9 +59,6 @@ class DetailFragment : Fragment(), View.OnClickListener{
         this.detailBinding.carouselView.pageCount = imageArray.size
 
     }
-
-//    var imageListener =
-//        ImageListener { position, imageView -> imageView.setImageResource(imageArray.get(position)) }
 
     override fun onClick(view: View?) {
         if(view==this.detailBinding.back) {

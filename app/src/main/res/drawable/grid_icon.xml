@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:drawable="@drawable/grid"
-        android:width="30dp"
-        android:height="30dp"
-        android:left="-5.2dp"/>
+        android:width="25dp"
+        android:height="25dp"/>
 </layer-list >

@@ -7,19 +7,35 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="240dp"
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/border"
-        android:drawableLeft="@drawable/search_icon"
-        android:hint="Search product name.."
-        android:padding="8dp"
-        android:textColor="@color/dark_blue"
-        android:textColorHint="@color/gray"
-        android:textSize="13sp" />
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="5dp"
+        android:background="@color/dark_blue">
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border"
+            android:drawableLeft="@drawable/search_icon"
+            android:hint="Search product name.."
+            android:padding="8dp"
+            android:textColor="@color/dark_blue"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:drawableRight="@drawable/cart_icon"/>
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/dropdown_category"
@@ -28,30 +44,35 @@
         android:padding="8dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:layout_below="@id/search_bar"
+        android:layout_below="@id/top_bar"
         android:background="@drawable/border" />
 
     <Button
+        android:id="@+id/layout_type_list"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingLeft="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/top_bar"
+        android:background="@drawable/dark_blue_btn"
+        android:drawableLeft="@drawable/list_icon" />
+
+    <Button
         android:id="@+id/layout_type_grid"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/top_bar"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/search_bar"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="8dp"
+        android:layout_toLeftOf="@id/layout_type_list"
         android:background="@drawable/grey_btn"
         android:drawableLeft="@drawable/grid_icon"
         app:backgroundTint="@null" />
 
-    <Button
-        android:id="@+id/layout_type_list"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/layout_type_grid"
-        android:background="@drawable/dark_blue_btn"
-        android:drawableLeft="@drawable/list_icon" />
 
     <LinearLayout
         android:id="@+id/column_title"
@@ -61,7 +82,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@id/dropdown_category"
+        android:padding="5dp"
+        android:layout_below="@id/layout_type_list"
         android:background="@color/dark_blue">
 
         <TextView
@@ -70,7 +92,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:text="Product Name"
-            android:textColor="@color/yellow"/>
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/product_category"
@@ -78,29 +102,35 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:text="Category"
-            android:textColor="@color/yellow"/>
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/product_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.19"
+            android:layout_weight="0.2"
             android:text="Price"
-            android:textColor="@color/yellow"/>
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/product_condition"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.15"
+            android:layout_weight="0.2"
             android:text="Condition"
-            android:textColor="@color/yellow"/>
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/lst_products"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="550dp"
         android:layout_below="@id/column_title"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -110,13 +140,14 @@
     <Button
         android:id="@+id/button_load_more"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_below="@id/lst_products"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/dark_blue_btn"
         android:text="Load More"
         android:textColor="@color/yellow"
-        android:textSize="10dp" />
+        android:textSize="15sp" />
 </RelativeLayout>
 
 

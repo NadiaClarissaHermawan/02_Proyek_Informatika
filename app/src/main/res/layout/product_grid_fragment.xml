@@ -1,145 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-
-        android:layout_weight="0.1"
-
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        >
+        android:paddingTop="20dp"
+        android:paddingBottom="5dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="0.65"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/search_bar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:background="@drawable/border"
-                android:layout_marginBottom="4.0dp"
-                android:layout_gravity="center"
-                android:hint="Search product name.."
-                android:padding="8dp"
-                android:textSize="13sp"
-                android:textColorHint="@color/gray"
-                />
-            <Spinner
-                android:id="@+id/dropdown_category"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:background="@drawable/border"
-                android:layout_gravity="center"
-                android:layout_marginTop="4.0dp"
-                android:padding="8dp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="0.3"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border"
+            android:drawableLeft="@drawable/search_icon"
+            android:hint="Search product name.."
+            android:padding="8dp"
+            android:textColor="@color/dark_blue"
+            android:textColorHint="@color/gray"
+            android:textSize="15sp" />
 
-            >
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:layout_marginLeft="20dp"
-                >
-                <Button
-                    android:id="@+id/layout_type_grid"
-                    android:layout_marginRight="2dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:textColor="@color/yellow"
-                    android:background="@drawable/grid_btn"
-                    android:text="Grid"
-                    android:textSize="10dp"
-
-                    />
-                <Button
-                    android:id="@+id/layout_type_list"
-                    android:layout_marginLeft="2dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/list_btn"
-                    app:backgroundTint="@null"
-                    android:text="List"
-                    android:textSize="10dp"
-                    android:textColor="@color/yellow"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                >
-            </LinearLayout>
-
-        </LinearLayout>
-
-<!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
+        <Button
+            android:id="@+id/cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:drawableRight="@drawable/cart_icon" />
     </LinearLayout>
+
+    <Spinner
+        android:id="@+id/dropdown_category"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/top_bar"
+        android:background="@drawable/border" />
+
+    <Button
+        android:id="@+id/layout_type_list"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingLeft="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/top_bar"
+        android:background="@drawable/dark_blue_btn"
+        android:drawableLeft="@drawable/list_icon" />
+
+    <Button
+        android:id="@+id/layout_type_grid"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/top_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="8dp"
+        android:layout_toLeftOf="@id/layout_type_list"
+        android:background="@drawable/grey_btn"
+        android:drawableLeft="@drawable/grid_icon"
+        app:backgroundTint="@null" />
+
     <GridView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:id="@+id/lst_products"
-        android:layout_weight="0.8"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
         android:numColumns="3"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/layout_type_list"
+        android:layout_margin="20dp"/>
 
-    />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.05"
-        android:layout_marginTop="10dp"
-        >
-
-        <Button
-            android:id="@+id/button_load_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:background="@drawable/dark_blue_btn"
-            android:text="Load More"
-            android:textColor="@color/yellow"
-            android:textSize="10dp" />
-
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.05"
-        >
-
-    </LinearLayout>
-</LinearLayout>
-
+    <Button
+        android:id="@+id/button_load_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/dark_blue_btn"
+        android:text="Load More"
+        android:textColor="@color/yellow"
+        android:textSize="15sp" />
+</RelativeLayout>
 
