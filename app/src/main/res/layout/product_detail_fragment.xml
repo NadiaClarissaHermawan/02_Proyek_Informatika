@@ -11,24 +11,25 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
         android:orientation="horizontal"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="20dp"
-        android:background="@color/dark_blue">
+        android:paddingTop="23dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp">
 
         <Button
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/back_icon"/>
+            android:drawableLeft="@drawable/back_icon" />
 
         <Button
             android:id="@+id/cart"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="300dp"
-            android:drawableRight="@drawable/cart_icon"/>
+            android:drawableRight="@drawable/cart_icon" />
     </LinearLayout>
 
     <com.synnapps.carouselview.CarouselView

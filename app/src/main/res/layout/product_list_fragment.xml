@@ -18,7 +18,7 @@
 
         <EditText
             android:id="@+id/search_bar"
-            android:layout_width="240dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:background="@drawable/border"
@@ -31,15 +31,15 @@
 
         <Button
             android:id="@+id/cart"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="70dp"
             android:drawableRight="@drawable/cart_icon"/>
     </LinearLayout>
 
     <Spinner
         android:id="@+id/dropdown_category"
-        android:layout_width="240dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:layout_marginLeft="20dp"
@@ -110,7 +110,7 @@
             android:id="@+id/product_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
+            android:layout_weight="0.25"
             android:text="Price"
             android:textSize="15sp"
             android:textColor="@color/yellow"

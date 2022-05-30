@@ -18,7 +18,7 @@
 
         <EditText
             android:id="@+id/search_bar"
-            android:layout_width="240dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:background="@drawable/border"
@@ -31,15 +31,15 @@
 
         <Button
             android:id="@+id/cart"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="70dp"
             android:drawableRight="@drawable/cart_icon" />
     </LinearLayout>
 
     <Spinner
         android:id="@+id/dropdown_category"
-        android:layout_width="240dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:layout_marginLeft="20dp"
@@ -57,8 +57,9 @@
         android:layout_marginTop="8dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/top_bar"
-        android:background="@drawable/dark_blue_btn"
-        android:drawableLeft="@drawable/list_icon" />
+        android:background="@drawable/grey_btn"
+        android:drawableLeft="@drawable/list_icon"
+        app:backgroundTint="@null"/>
 
     <Button
         android:id="@+id/layout_type_grid"
@@ -69,16 +70,15 @@
         android:layout_marginTop="8dp"
         android:paddingLeft="8dp"
         android:layout_toLeftOf="@id/layout_type_list"
-        android:background="@drawable/grey_btn"
-        android:drawableLeft="@drawable/grid_icon"
-        app:backgroundTint="@null" />
+        android:background="@drawable/dark_blue_btn"
+        android:drawableLeft="@drawable/grid_icon" />
 
     <GridView
         android:id="@+id/lst_products"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="570dp"
         android:numColumns="3"
-        android:horizontalSpacing="10dp"
+        android:horizontalSpacing="8dp"
         android:verticalSpacing="10dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/layout_type_list"
