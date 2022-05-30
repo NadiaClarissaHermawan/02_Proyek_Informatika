@@ -2,6 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,16 +13,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.15"
+
+        android:layout_weight="0.12"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         >
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="0.7"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
             <EditText
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
@@ -46,30 +48,49 @@
             android:layout_width="0dp"
             android:layout_weight="0.3"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
 
             >
-            <Button
-                android:id="@+id/layout_type_grid"
-                android:layout_margin="5dp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="0.5"
+                android:layout_marginLeft="3dp"
+                >
+                <Button
+                    android:id="@+id/layout_type_grid"
+                    android:layout_marginRight="2dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:textColor="@color/yellow"
+                    android:background="@drawable/grid_btn"
+                    android:text="Grid"
+                    android:textSize="10dp"
 
-                android:background="@drawable/grid_btn"
-                android:text="Grid"
-                android:textSize="10dp"
-                />
-            <Button
-                android:id="@+id/layout_type_list"
-                android:layout_margin="5dp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                    />
+                <Button
+                    android:id="@+id/layout_type_list"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/list_btn"
+                    app:backgroundTint="@null"
+                    android:text="List"
+                    android:textSize="10dp"
+                    android:textColor="@color/yellow"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/list_btn"
-                android:text="List"
-                android:textSize="10dp"
-                />
+                >
+            </LinearLayout>
+
         </LinearLayout>
 
 <!--  https://www.youtube.com/watch?v=on_OrrX7Nw4&ab_channel=CodinginFlow-->
@@ -98,7 +119,12 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:background="@drawable/dark_blue_btn"
-            android:text="Load More" />
+
+
+
+            android:text="Load More"
+            android:textColor="@color/yellow"/>
+
     </RelativeLayout>
 
 </LinearLayout>

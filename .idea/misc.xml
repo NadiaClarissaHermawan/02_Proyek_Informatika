@@ -9,9 +9,6 @@
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_grid_fragment.xml" value="0.23324275362318841" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_list_entry.xml" value="0.23324275362318841" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek2/app/src/main/res/layout/product_list_fragment.xml" value="0.28229166666666666" />
-        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_detail_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable-v24/dark_blue_btn.xml" value="0.209375" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/border.xml" value="0.209375" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/drawable-v24/dark_blue_btn.xml" value="0.2962962962962963" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/drawable-v24/dark_blue_btn_grid.xml" value="0.3828125" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/drawable-v24/dark_blue_btn_list.xml" value="0.3828125" />
@@ -24,12 +21,14 @@
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_detail_fragment.xml" value="0.33" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_grid_entry.xml" value="0.23867753623188406" />
         <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_grid_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_list_entry.xml" value="0.22708333333333333" />
+        <entry key="..\:/OONPAR/SEM6/Proyek Informatika/Proyek22/app/src/main/res/layout/product_list_fragment.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/activity_main.xml" value="0.19375" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_detail_fragment.xml" value="0.19375" 
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_detail_fragment.xml" value="0.19375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_entry.xml" value="0.19375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_fragment.xml" value="0.22" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_entry.xml" value="0.67" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_fragment.xml" value="0.19375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_tile_entry.xml" value="0.19375" />
       </map>
     </option>
