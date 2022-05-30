@@ -107,19 +107,18 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_weight="0.7">
-    </ListView>
+        android:layout_weight="0.7"></ListView>
 
     <Button
         android:id="@+id/button_load_more"
         android:layout_width="wrap_content"
         android:layout_height="31dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/lst_products"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/dark_blue_btn"
         android:text="Load More"
-        android:textSize="10dp"
-        android:textColor="@color/yellow"/>
+        android:textColor="@color/yellow"
+        android:textSize="10dp" />
 </RelativeLayout>
 
 
