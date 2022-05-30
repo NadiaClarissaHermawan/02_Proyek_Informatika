@@ -38,7 +38,7 @@ We need to display the Shopping cart after user click the Add to Cart button. Se
    - Click Purchase button will go to fill order screen.
 
 4. Fill Order screen
-This screen is shown after user click purchase button in shopping car screen. See screen design here: https://monosnap.com/file/sM4Nk3XryuugfEDiyDHoaQACNgh8u5
+This screen is shown after user click purchase button in shopping car screen. 
    - Show the address information as shown in screenshot.
    - Click > will go to manage address screen.
    - Show the products we buy: product name, price, and amount.
