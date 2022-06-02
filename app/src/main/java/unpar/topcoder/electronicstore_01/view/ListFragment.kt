@@ -109,11 +109,11 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             target.putString("keyword", this.listBinding.searchBar.text.toString())
             parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
 
-        //load more
+            //load more
         } else if (view == this.listBinding.buttonLoadMore) {
             this.callUpdateList(this.dataOffset, this.dataOffset + 4)
 
-        //sort product's name
+            //sort product's name
         } else if (view == this.listBinding.productName) {
             if (this.sortByName == 0) {
                 this.presenter.sorting(0, 0)
@@ -123,7 +123,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.sortByName = 0
             }
 
-        //sort product's price
+            //sort product's price
         } else if (view == this.listBinding.productPrice) {
             if (this.sortByPrice == 0) {
                 this.presenter.sorting(1, 0)
@@ -133,7 +133,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.sortByPrice = 0
             }
 
-        //sort product's condition
+            //sort product's condition
         } else if (view == this.listBinding.productCondition) {
             if (this.sortByCondition == 0) {
                 this.presenter.sorting(2, 0)

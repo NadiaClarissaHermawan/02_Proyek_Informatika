@@ -1,12 +1,17 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import unpar.topcoder.electronicstore_01.databinding.ProductListEntryBinding
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.presenter.ListPresenter
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ListAdapter (private var activity : Activity, private var presenter : ListPresenter) : BaseAdapter(){
     private lateinit var listItemBinding : ProductListEntryBinding
@@ -54,8 +59,16 @@ class ListAdapter (private var activity : Activity, private var presenter : List
         this.listItemBinding.productName.text = currProduct.getNama()
         this.listItemBinding.productCategory.text = ""+currProduct.getKategori()
         this.listItemBinding.productCondition.text = ""+currProduct.getKondisi()+"%"
-        this.listItemBinding.productPrice.text = "Rp "+currProduct.getHarga()
+        this.listItemBinding.productPrice.text = this.convertInt(currProduct.getHarga())
+
         //set item's click listener
         this.listItemBinding.root.setOnClickListener{this.presenter.goDetailsPage(currProduct)}
+    }
+
+    //format integer to rupiah
+    fun convertInt(price : Int): String {
+        val localeID : Locale = Locale("in", "ID")
+        val formats = NumberFormat.getCurrencyInstance(localeID)
+        return formats.format(price)
     }
 }

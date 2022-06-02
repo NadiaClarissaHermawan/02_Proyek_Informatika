@@ -50,12 +50,12 @@ class ListPresenter (private val ui : IList) {
             else if (selectedCategory == 2) selection = ProductCode.WATCHES
             // Galaxy buds
             else if (selectedCategory == 3) selection = ProductCode.GALAXYBUDS
-            
+
             //loop ambil data sesuai kategori
             for (i in 0..(dataOffset-1)) {
-               if (i < size && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
+                if (i < size && AllProducts.products[i].getKategori() == selection && AllProducts.products[i].getNama().contains(filter, ignoreCase = true)) {
                     result.add(AllProducts.products[i])
-               } else if (i > size) break
+                } else if (i > size) break
             }
         }
         this.products.clear()
@@ -72,14 +72,14 @@ class ListPresenter (private val ui : IList) {
             } else {
                 this.processSortingResult(this.products.sortedByDescending { it.getNama() })
             }
-        //by price
+            //by price
         } else if (attr == 1) {
             if (mode == 0) {
                 this.processSortingResult(this.products.sortedBy { it.getHarga() })
             } else {
                 this.processSortingResult(this.products.sortedByDescending { it.getHarga() })
             }
-        //by conditions
+            //by conditions
         } else {
             if (mode == 0) {
                 this.processSortingResult(this.products.sortedBy { it.getKondisi() })

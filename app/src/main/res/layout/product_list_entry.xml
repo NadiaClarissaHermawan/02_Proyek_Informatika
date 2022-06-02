@@ -12,8 +12,7 @@
         android:id="@+id/pencetan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:textSize="10sp"
@@ -23,8 +22,9 @@
             android:id="@+id/product_name"
             android:textColor="@color/dark_blue"
             android:text="PRODUCT NAME"
-            >
+            android:textAlignment="center">
         </TextView>
+
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
@@ -33,27 +33,29 @@
             android:id="@+id/product_category"
             android:textColor="@color/dark_blue"
             android:text="CATEGORY"
-            >
+            android:textAlignment="center">
         </TextView>
+
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.19"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
             android:id="@+id/product_price"
             android:textColor="@color/dark_blue"
             android:text="PRICE"
-            >
+            android:textAlignment="center">
         </TextView>
+
         <TextView
             android:textSize="10sp"
             android:layout_width="0dp"
-            android:layout_weight="0.16"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:id="@+id/product_condition"
             android:textColor="@color/dark_blue"
             android:text="CONDITION"
-            >
+            android:textAlignment="center">
         </TextView>
     </LinearLayout>
 

@@ -10,6 +10,9 @@ import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.ProductDetailFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 //fragment
 class DetailFragment : Fragment(), View.OnClickListener{
@@ -46,11 +49,10 @@ class DetailFragment : Fragment(), View.OnClickListener{
     //update details produk ke layar
     fun updateLayout(currentProduct : ProductDetails){
         this.detailBinding.productCategory.text = currentProduct.getKategori()
-        this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()
-        //this.detailBinding.productDescription.text = currentProduct.getDesc()
-        //this.detailBinding.productImage.setImageResource(currentProduct.getImageSource())
+        this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()+"% new"
         this.detailBinding.productName.text = currentProduct.getNama()
-        this.detailBinding.productPrice.text = "Rp "+currentProduct.getHarga()
+        this.detailBinding.productPrice.text = this.convertInt(currentProduct.getHarga())
+
         //untuk ngeset image carousel
         var imageArray:ArrayList<Int> =  ArrayList()
         imageArray.add(currentProduct.getImageSource())
@@ -59,11 +61,14 @@ class DetailFragment : Fragment(), View.OnClickListener{
         var imageListener = ImageListener {position, imageView ->  imageView.setImageResource(imageArray[position])}
         this.detailBinding.carouselView.setImageListener(imageListener)
         this.detailBinding.carouselView.pageCount = imageArray.size
-
     }
 
-//    var imageListener =
-//        ImageListener { position, imageView -> imageView.setImageResource(imageArray.get(position)) }
+    //format integer to rupiah
+    fun convertInt(price : Int): String {
+        val localeID : Locale = Locale("in", "ID")
+        val formats = NumberFormat.getCurrencyInstance(localeID)
+        return formats.format(price)
+    }
 
     override fun onClick(view: View?) {
         if(view==this.detailBinding.back) {
