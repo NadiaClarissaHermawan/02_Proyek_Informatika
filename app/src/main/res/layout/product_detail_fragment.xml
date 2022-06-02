@@ -12,24 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_blue"
-        android:paddingTop="15dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="18dp"
+        android:paddingBottom="20dp">
 
-        <Button
+        <ImageView
             android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-5dp"
-            android:drawableLeft="@drawable/back_icon" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back" />
 
-        <Button
-            android:id="@+id/cart"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/cart1"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="-5dp"
-            android:layout_marginRight="15dp"
-            android:drawableRight="@drawable/cart_icon" />
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/cart" />
     </RelativeLayout>
 
     <com.synnapps.carouselview.CarouselView
@@ -134,7 +135,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
-
             android:background="@color/white"
             android:textSize="15sp"
             android:textColor="@color/dark_blue"

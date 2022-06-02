@@ -1,6 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Edit Address"
+        android:textColor="@color/dark_blue"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+    
+    <ImageView
+        android:id="@+id/close_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"/>
+
+    <RelativeLayout
+        android:id="@+id/form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Name"
+            android:textColor="@color/dark_blue"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/td1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/customer_name"
+            android:padding="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textColor="@color/dark_blue"/>
+
+        <EditText
+            android:id="@+id/customer_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/td1"
+            android:padding="5dp"
+            android:text="halo"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:background="@drawable/form_layout"/>
+
+        <TextView
+            android:id="@+id/customer_contact"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_name"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Contact"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/td2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/customer_contact"
+            android:layout_below="@id/td1"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textColor="@color/dark_blue"/>
+
+        <EditText
+            android:id="@+id/customer_edit_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_edit_name"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/td2"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:text="halo"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:background="@drawable/form_layout"/>
+
+        <TextView
+            android:id="@+id/customer_address"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_contact"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Address"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/td3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/customer_contact"
+            android:layout_below="@id/td2"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textColor="@color/dark_blue"/>
+
+        <EditText
+            android:id="@+id/customer_edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_edit_contact"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/td3"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:text="halo"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:background="@drawable/form_layout"/>
+
+        <LinearLayout
+            android:id="@+id/default_wrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/customer_address">
+
+            <TextView
+                android:id="@+id/set_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/customer_address"
+                android:padding="5dp"
+                android:text="Set as default?"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_default_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/set_default"
+                android:layout_below="@id/customer_edit_address"
+                app:thumbTint="@color/yellow"
+                app:trackTint="@color/dark_blue"
+                android:checked="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/default_wrap"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/dark_blue_btn"
+            android:text="Save"
+            android:textColor="@color/yellow"/>
+
+    </RelativeLayout>
+</RelativeLayout>
