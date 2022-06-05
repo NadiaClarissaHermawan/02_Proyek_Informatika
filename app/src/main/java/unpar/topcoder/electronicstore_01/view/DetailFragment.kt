@@ -80,7 +80,7 @@ class DetailFragment : Fragment(), View.OnClickListener {
     // update details produk ke layar
     fun updateLayout(currentProduct: ProductDetails) {
         this.detailBinding.productCategory.text = currentProduct.getKategori()
-        this.detailBinding.productCondition.text = ""+currentProduct.getKondisi()+"% new"
+        this.detailBinding.productCondition.text = "" + currentProduct.getKondisi() + "% new"
         this.detailBinding.productName.text = currentProduct.getNama()
         this.detailBinding.productPrice.text = this.convertInt(currentProduct.getHarga())
 

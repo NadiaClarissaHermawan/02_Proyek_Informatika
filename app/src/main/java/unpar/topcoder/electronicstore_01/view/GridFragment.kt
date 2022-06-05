@@ -50,7 +50,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         this.gridBinding.buttonLoadMore.setOnClickListener(this::onClick)
 
         // add first 5 products
-        presenter.updateGrid(this.dataOffset, this.dataOffset+4)
+        presenter.updateGrid(this.dataOffset, this.dataOffset + 4)
 
         // sync product with list layout (listener)
         this.parentFragmentManager.setFragmentResultListener(Page.SYNC_LISTENER, this) {
@@ -96,7 +96,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.gridBinding.searchBar.text.toString())
+        this.presenter.changeCategoryFilter(p2 - 1, this.dataOffset, this.gridBinding.searchBar.text.toString())
     }
 
     // salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
@@ -151,14 +151,14 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
             override fun afterTextChanged(p0: Editable?) {
                 val keyword = gridBinding.searchBar.text.toString()
                 val category = gridBinding.dropdownCategory.selectedItemPosition
-                presenter.changeCategoryFilter(category-1, dataOffset, keyword)
+                presenter.changeCategoryFilter(category - 1, dataOffset, keyword)
             }
         })
     }
 
     // sync product with list fragment, then sync filter & category
     private fun callUpdateGrid(target: Int, category: Int, keyword: String) {
-        this.presenter.updateGrid(this.dataOffset, target-1)
-        this.presenter.changeCategoryFilter(category-1, target, keyword)
+        this.presenter.updateGrid(this.dataOffset, target - 1)
+        this.presenter.changeCategoryFilter(category - 1, target, keyword)
     }
 }

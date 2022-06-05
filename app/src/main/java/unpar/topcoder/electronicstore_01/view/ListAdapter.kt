@@ -56,8 +56,8 @@ class ListAdapter(private var activity: Activity, private var presenter: ListPre
     // show prods details to layout
     fun updateLayout(currProduct: ProductDetails) {
         this.listItemBinding.productName.text = currProduct.getNama()
-        this.listItemBinding.productCategory.text = ""+currProduct.getKategori()
-        this.listItemBinding.productCondition.text = ""+currProduct.getKondisi()+"%"
+        this.listItemBinding.productCategory.text = "" + currProduct.getKategori()
+        this.listItemBinding.productCondition.text = "" + currProduct.getKondisi() + "%"
         this.listItemBinding.productPrice.text = this.convertInt(currProduct.getHarga())
 
         // set item's click listener

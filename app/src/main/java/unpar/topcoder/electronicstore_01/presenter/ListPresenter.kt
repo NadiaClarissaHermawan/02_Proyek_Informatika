@@ -21,7 +21,7 @@ class ListPresenter(private val ui: IList) {
                 }
             }
             this.products.addAll(prods)
-            this.ui.updateList(this.products, target+1)
+            this.ui.updateList(this.products, target + 1)
         } else if (offset == -1) {
             this.ui.updateList(this.products, dataOffset)
         }
@@ -34,7 +34,7 @@ class ListPresenter(private val ui: IList) {
 
         // all
         if (selectedCategory == -1) {
-            for (i in 0..dataOffset-1) {
+            for (i in 0..dataOffset - 1) {
                 if (i < size && AllProducts.products[i].getNama().contains(filter, ignoreCase = true))
                     result.add(AllProducts.products[i])
                 else if (i > size) break
@@ -54,7 +54,7 @@ class ListPresenter(private val ui: IList) {
             }
 
             // loop ambil data sesuai kategori
-            for (i in 0..(dataOffset-1)) {
+            for (i in 0..(dataOffset - 1)) {
                 if (
                     i < size && AllProducts.products[i].getKategori() == selection &&
                     AllProducts.products[i].getNama().contains(filter, ignoreCase = true)

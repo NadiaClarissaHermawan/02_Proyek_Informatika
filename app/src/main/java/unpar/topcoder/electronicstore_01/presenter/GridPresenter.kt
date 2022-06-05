@@ -22,7 +22,7 @@ class GridPresenter(private var ui: GridInterface) {
                 }
             }
             this.prods.addAll(prods)
-            this.ui.updateGrid(this.prods, target+1)
+            this.ui.updateGrid(this.prods, target + 1)
         }
     }
 
@@ -37,7 +37,7 @@ class GridPresenter(private var ui: GridInterface) {
 
         // all
         if (selectedCategory == -1) {
-            for (i in 0..dataOffset-1) {
+            for (i in 0..dataOffset - 1) {
                 if (i < size &&  AllProducts.products[i].getNama().contains(filter, ignoreCase = true))
                     result.add(AllProducts.products[i])
                 else if (i > size) break
