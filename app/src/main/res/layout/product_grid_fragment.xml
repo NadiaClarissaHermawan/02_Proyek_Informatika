@@ -106,4 +106,3 @@
         android:textColor="@color/yellow"
         android:textSize="15sp" />
 </RelativeLayout>
-
