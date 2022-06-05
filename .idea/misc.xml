@@ -24,26 +24,31 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/bg_spinner_sharp.xml" value="0.13697916666666668" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/border.xml" value="0.209375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/cart_icon.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/form_layout.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/grid_icon.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/list_icon.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/max_btn.xml" value="0.17037037037037037" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/min_btn.xml" value="0.17037037037037037" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/next_icon.xml" value="0.17037037037037037" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/search_icon.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/tiles_border.xml" value="0.17592592592592593" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/trash_icon.xml" value="0.17037037037037037" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/drawable/tumbnail.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/activity_main.xml" value="0.19375" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/address_edit_popup.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/check_out_entry.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/check_out_fragment.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/choose_address_entry.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/choose_address_fragment.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/address_edit_popup.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/check_out_entry.xml" value="0.18" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/check_out_fragment.xml" value="0.19" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/choose_address_entry.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/choose_address_fragment.xml" value="0.18" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/dropdown_field.xml" value="0.1" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_detail_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_detail_fragment.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_entry.xml" value="0.13559322033898305" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_fragment.xml" value="0.18" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_grid_fragment.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_entry.xml" value="0.33" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_list_fragment.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/product_tile_entry.xml" value="0.19375" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/shopping_cart_entry.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/shopping_cart_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/shopping_cart_entry.xml" value="0.2" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/shopping_cart_fragment.xml" value="0.18" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/ProyekInformatika/ElectronicStore_01/app/src/main/res/layout/spinner_layout.xml" value="0.33" />
       </map>
     </option>

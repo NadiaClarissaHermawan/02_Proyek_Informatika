@@ -1,6 +1,5 @@
 package unpar.topcoder.electronicstore_01.presenter
 
-// import android.util.Log
 import unpar.topcoder.electronicstore_01.model.AllProducts
 import unpar.topcoder.electronicstore_01.model.ProductCode
 import unpar.topcoder.electronicstore_01.model.ProductDetails

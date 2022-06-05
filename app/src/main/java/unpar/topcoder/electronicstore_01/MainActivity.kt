@@ -10,6 +10,7 @@ import unpar.topcoder.electronicstore_01.databinding.ActivityMainBinding
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.view.DetailFragment
 import unpar.topcoder.electronicstore_01.view.GridFragment
+import unpar.topcoder.electronicstore_01.view.ShoppingCartFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentManager: FragmentManager
@@ -17,9 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var arrFragment: Array<Fragment>
     private var currentFragment: Int = Page.LIST_PAGE
-    private lateinit var listFragment: ListFragment
-    private lateinit var gridFragment: GridFragment
     private lateinit var detailFragment: Fragment
+    private lateinit var gridFragment: GridFragment
+    private lateinit var listFragment: ListFragment
+    private lateinit var shoppingCartFragment: ShoppingCartFragment
 
     // constructor
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(this.mainBinding.root)
 
         // initiate fragments & masukkin ke array
-        this.listFragment = ListFragment.getInstance()
-        this.gridFragment = GridFragment.getInstance(this.listFragment)
         this.detailFragment = DetailFragment.getInstance()
-        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment)
+        this.gridFragment = GridFragment.getInstance(this.listFragment)
+        this.listFragment = ListFragment.getInstance()
+        this.shoppingCartFragment = ShoppingCartFragment.getInstance()
+        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment, this.shoppingCartFragment)
 
         // initialize frag manager & set main page
         this.fragmentManager = supportFragmentManager
