@@ -65,8 +65,8 @@ class GridAdapter(
     // function update layout (buat recycle)
     fun updateLayout(currentProduct: ProductDetails) {
         this.gridItemBinding.productName.text=this.currentProduct.getNama()
-        this.gridItemBinding.productCategory.text=""+this.currentProduct.getKategori()
-        this.gridItemBinding.productCondition.text = ""+this.currentProduct.getKondisi()+"%"
+        this.gridItemBinding.productCategory.text="" + this.currentProduct.getKategori()
+        this.gridItemBinding.productCondition.text = "" + this.currentProduct.getKondisi() + "%"
         this.gridItemBinding.productPrice.text = this.convertInt(currentProduct.getHarga())
         this.gridItemBinding.productImage.setImageResource(this.currentProduct.getImageSource())
         this.gridItemBinding.root.setOnClickListener{

@@ -74,7 +74,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         this.presenter.updateList(offset, target)
         val keyword = listBinding.searchBar.text.toString()
         val category = listBinding.dropdownCategory.selectedItemPosition
-        this.presenter.changeCategoryFilter(category-1, target + 1, keyword)
+        this.presenter.changeCategoryFilter(category - 1, target + 1, keyword)
     }
 
     // onclick listener method
@@ -128,7 +128,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
     // select listener untuk spinner
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategoryFilter(p2-1, this.dataOffset, this.listBinding.searchBar.text.toString())
+        this.presenter.changeCategoryFilter(p2 - 1, this.dataOffset, this.listBinding.searchBar.text.toString())
     }
 
     // do nothing
@@ -178,7 +178,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             override fun afterTextChanged(p0: Editable?) {
                 val keyword = listBinding.searchBar.text.toString()
                 val category = listBinding.dropdownCategory.selectedItemPosition
-                presenter.changeCategoryFilter(category-1, dataOffset, keyword)
+                presenter.changeCategoryFilter(category - 1, dataOffset, keyword)
             }
         })
     }
@@ -188,7 +188,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
     fun syncList(newDataOffset: Int, category: Int, keyword: String) {
         this.listBinding.dropdownCategory.setSelection(category)
         this.listBinding.searchBar.setText(keyword)
-        this.callUpdateList(this.dataOffset, newDataOffset-1)
+        this.callUpdateList(this.dataOffset, newDataOffset - 1)
         this.dataOffset = newDataOffset
     }
 
