@@ -6,20 +6,21 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import unpar.topcoder.electronicstore_01.databinding.ShoppingCartEntryBinding
 import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ShoppingCartAdapter(private var activity: Activity, private var presenter: ShoppingCartPresenter) : BaseAdapter(), View.OnClickListener {
+class ShoppingCartAdapter(private var activity: Activity, private var presenter: ShoppingCartPresenter) : BaseAdapter() {
     private lateinit var shoppingCartEntryBinding: ShoppingCartEntryBinding
-    private var prods: ArrayList<ProductDetails> = ArrayList()
+    private var prods: ArrayList<ShoppingCartItem> = ArrayList()
 
     override fun getCount() : Int {
         return this.prods.size
     }
 
-    override fun getItem(p0: Int) : ProductDetails {
+    override fun getItem(p0: Int) : ShoppingCartItem {
         return this.prods[p0]
     }
 
@@ -39,7 +40,7 @@ class ShoppingCartAdapter(private var activity: Activity, private var presenter:
         }
 
         // take current prod & show the details to layout
-        var currproduct: ProductDetails = this.getItem(p0)
+        var currproduct: ShoppingCartItem = this.getItem(p0)
         this.updateLayout(currproduct)
 
         return this.shoppingCartEntryBinding.root
@@ -53,32 +54,30 @@ class ShoppingCartAdapter(private var activity: Activity, private var presenter:
     }
 
     // show prods details to layout
-    fun updateLayout(currProduct: ProductDetails) {
-        this.shoppingCartEntryBinding.productName.text = currProduct.getNama()
-        this.shoppingCartEntryBinding.productCategory.text = ""+currProduct.getKategori()
-        this.shoppingCartEntryBinding.productCondition.text = ""+currProduct.getKondisi()+"%"
-        this.shoppingCartEntryBinding.productPrice.text = this.convertInt(currProduct.getHarga())
+    fun updateLayout(currProduct: ShoppingCartItem) {
+        this.shoppingCartEntryBinding.productName.text = currProduct.getProduct().getNama()
+        this.shoppingCartEntryBinding.productCategory.text = ""+currProduct.getProduct().getKategori()
+        this.shoppingCartEntryBinding.productCondition.text = ""+currProduct.getProduct().getKondisi()+"%"
+        this.shoppingCartEntryBinding.productPrice.text = this.convertInt(currProduct.getProduct().getHarga())
+        this.shoppingCartEntryBinding.productImage.setImageResource(currProduct.getProduct().getImageSource())
+        this.shoppingCartEntryBinding.quantity.text = currProduct.getQuantity().toString()
 
-        this.shoppingCartEntryBinding.checkbox.setOnClickListener(this::onClick)
-        this.shoppingCartEntryBinding.min.setOnClickListener(this::onClick)
-        this.shoppingCartEntryBinding.plus.setOnClickListener(this::onClick)
-        this.shoppingCartEntryBinding.trashBtn.setOnClickListener(this::onClick)
-    }
-
-    override fun onClick(view: View?) {
-        if (view == this.shoppingCartEntryBinding.checkbox) {
-
-        } else if (view == this.shoppingCartEntryBinding.min) {
-
-        } else if (view == this.shoppingCartEntryBinding.plus) {
-
-        } else if (view == this.shoppingCartEntryBinding.trashBtn) {
-
+        this.shoppingCartEntryBinding.checkbox.setOnClickListener {
+            this.presenter.check(currProduct)
+        }
+        this.shoppingCartEntryBinding.min.setOnClickListener {
+            this.presenter.min(currProduct)
+        }
+        this.shoppingCartEntryBinding.plus.setOnClickListener {
+            this.presenter.add(currProduct.getProduct())
+        }
+        this.shoppingCartEntryBinding.trashBtn.setOnClickListener {
+            this.presenter.delete(currProduct)
         }
     }
 
     // terima updated product list dari fragment
-    fun updateList(products: ArrayList<ProductDetails>) {
+    fun updateList(products: ArrayList<ShoppingCartItem>) {
         this.prods = ArrayList()
         this.prods.addAll(products)
         notifyDataSetChanged()

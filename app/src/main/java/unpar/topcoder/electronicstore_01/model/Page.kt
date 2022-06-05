@@ -13,6 +13,7 @@ object Page {
     const val CHANGE_PAGE_LISTENER = "changePage"
     const val CHANGE_TO_DETAILS_LISTENER = "changeToDetails"
     const val CHANGE_TO_SHOPPING_CART_LISTENER = "changeToShoppingCart"
+    const val ADD_TO_SHOPPING_CART = "addToShoppingCart"
     const val SYNC_LISTENER = "sync"
     const val PAGE = "page"
 }
