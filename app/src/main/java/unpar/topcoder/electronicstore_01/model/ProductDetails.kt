@@ -3,9 +3,18 @@ package unpar.topcoder.electronicstore_01.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-//model including constructor
+// model including constructor
 @Parcelize
-class ProductDetails (private var nama : String, private var kondisi : Int, private var kategori : String, private var harga : Int, private var imageSource:Int, private var imageSource2:Int, private var imageSource3:Int) : Parcelable {
+class ProductDetails (
+    private var nama : String,
+    private var kondisi : Int,
+    private var kategori : String,
+    private var harga : Int,
+    private var imageSource:Int,
+    private var imageSource2:Int,
+    private var imageSource3:Int
+): Parcelable {
+
     fun getNama () : String {
         return this.nama
     }
@@ -33,5 +42,4 @@ class ProductDetails (private var nama : String, private var kondisi : Int, priv
     fun getImageSource3() : Int {
         return this.imageSource3
     }
-
 }
