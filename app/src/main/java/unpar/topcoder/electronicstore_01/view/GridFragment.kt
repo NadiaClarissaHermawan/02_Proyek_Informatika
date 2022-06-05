@@ -24,8 +24,6 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     private lateinit var listFragment: ListFragment
     private var dataOffset: Int = 0
 
-
-
     // view constructor
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,7 +76,18 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
                 this.gridBinding.dropdownCategory.selectedItemPosition,
                 this.gridBinding.searchBar.text.toString()
             )
-            // load more
+
+        // ganti ke shopping cart page
+        } else if (view == this.gridBinding.cart1) {
+            var pg = Bundle()
+            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+
+            var currPg = Bundle()
+            currPg.putInt("layout", Page.GRID_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_TO_SHOPPING_CART_LISTENER, currPg)
+
+        // load more
         } else if (view == this.gridBinding.buttonLoadMore) {
             val keyword = gridBinding.searchBar.text.toString()
             val category = gridBinding.dropdownCategory.selectedItemPosition
@@ -108,7 +117,6 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         pg.putInt(Page.PAGE, Page.DETAIL_PAGE)
         parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
-
 
     // do nothing
     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -148,12 +156,9 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         })
     }
 
-
     // sync product with list fragment, then sync filter & category
     private fun callUpdateGrid(target: Int, category: Int, keyword: String) {
         this.presenter.updateGrid(this.dataOffset, target-1)
         this.presenter.changeCategoryFilter(category-1, target, keyword)
     }
-
-
 }

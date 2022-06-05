@@ -72,5 +72,4 @@ class ListAdapter(private var activity: Activity, private var presenter: ListPre
         this.prods.addAll(products)
         notifyDataSetChanged()
     }
-
 }

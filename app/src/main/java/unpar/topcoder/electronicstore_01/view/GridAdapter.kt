@@ -80,6 +80,4 @@ class GridAdapter(
         this.prods.addAll(prods)
         this.notifyDataSetChanged()
     }
-
-
 }

@@ -26,8 +26,6 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
     private var sortByPrice: Int = 0
     private var sortByCondition: Int = 0
 
-
-
     // constructor
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +52,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         this.listBinding.productName.setOnClickListener(this::onClick)
         this.listBinding.productPrice.setOnClickListener(this::onClick)
         this.listBinding.productCondition.setOnClickListener(this::onClick)
+        this.listBinding.cart1.setOnClickListener(this::onClick)
 
         // initial products
         this.callUpdateList(this.dataOffset, this.dataOffset + 4)
@@ -91,11 +90,21 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             target.putString("keyword", this.listBinding.searchBar.text.toString())
             parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
 
-            // load more
+        // ganti ke shopping cart page
+        } else if (view == this.listBinding.cart1) {
+            var pg = Bundle()
+            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+
+            var currPg = Bundle()
+            currPg.putInt("layout", Page.LIST_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_TO_SHOPPING_CART_LISTENER, currPg)
+
+        // load more
         } else if (view == this.listBinding.buttonLoadMore) {
             this.callUpdateList(this.dataOffset, this.dataOffset + 4)
 
-            // sort product's name
+        // sort product's name
         } else if (view == this.listBinding.productName) {
             if (this.sortByName == 0) {
                 this.presenter.sorting(0, 0)
@@ -105,7 +114,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.sortByName = 0
             }
 
-            // sort product's price
+        // sort product's price
         } else if (view == this.listBinding.productPrice) {
             if (this.sortByPrice == 0) {
                 this.presenter.sorting(1, 0)
@@ -114,7 +123,8 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.presenter.sorting(1, 1)
                 this.sortByPrice = 0
             }
-            // sort product's condition
+
+        // sort product's condition
         } else if (view == this.listBinding.productCondition) {
             if (this.sortByCondition == 0) {
                 this.presenter.sorting(2, 0)
@@ -167,7 +177,6 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         spinnr.onItemSelectedListener = this
     }
 
-
     // setup text filter listener
     fun setupFilter() {
         this.listBinding.searchBar.addTextChangedListener(object: TextWatcher {
@@ -183,7 +192,6 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         })
     }
 
-
     // sync product from grid fragment
     fun syncList(newDataOffset: Int, category: Int, keyword: String) {
         this.listBinding.dropdownCategory.setSelection(category)
@@ -191,7 +199,4 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         this.callUpdateList(this.dataOffset, newDataOffset-1)
         this.dataOffset = newDataOffset
     }
-
-
-
 }

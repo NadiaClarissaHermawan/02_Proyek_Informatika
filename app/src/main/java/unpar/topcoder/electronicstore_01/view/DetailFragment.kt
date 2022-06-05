@@ -19,9 +19,8 @@ import unpar.topcoder.electronicstore_01.model.ProductDetails
 class DetailFragment : Fragment(), View.OnClickListener {
     private lateinit var detailBinding: ProductDetailFragmentBinding
     private var layout: Int = Page.LIST_PAGE
-    // private var imageArray:ArrayList<Int> =  ArrayList()
-    // constructor
 
+    // constructor
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,6 +46,16 @@ class DetailFragment : Fragment(), View.OnClickListener {
             var pg = Bundle()
             pg.putInt(Page.PAGE, this.layout)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+
+        // ganti ke shopping cart page
+        } else if (view == this.detailBinding.cart1) {
+            var pg = Bundle()
+            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+
+            var currPg = Bundle()
+            currPg.putInt("layout", Page.DETAIL_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_TO_SHOPPING_CART_LISTENER, currPg)
         }
     }
 

@@ -6,16 +6,16 @@ import kotlinx.parcelize.Parcelize
 // model including constructor
 @Parcelize
 class ProductDetails (
-    private var nama : String,
-    private var kondisi : Int,
-    private var kategori : String,
-    private var harga : Int,
+    private var nama: String,
+    private var kondisi: Int,
+    private var kategori: String,
+    private var harga: Int,
     private var imageSource:Int,
     private var imageSource2:Int,
     private var imageSource3:Int
 ): Parcelable {
 
-    fun getNama () : String {
+    fun getNama() : String {
         return this.nama
     }
 
