@@ -5,12 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import unpar.topcoder.electronicstore_01.view.ListFragment
 import unpar.topcoder.electronicstore_01.databinding.ActivityMainBinding
 import unpar.topcoder.electronicstore_01.model.Page
-import unpar.topcoder.electronicstore_01.view.DetailFragment
-import unpar.topcoder.electronicstore_01.view.GridFragment
-import unpar.topcoder.electronicstore_01.view.ShoppingCartFragment
+import unpar.topcoder.electronicstore_01.view.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentManager: FragmentManager
@@ -22,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gridFragment: GridFragment
     private lateinit var listFragment: ListFragment
     private lateinit var shoppingCartFragment: ShoppingCartFragment
+    private lateinit var checkoutFragment : CheckoutFragment
 
     // constructor
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,16 +29,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(this.mainBinding.root)
 
         // initiate fragments & masukkin ke array
-        this.detailFragment = DetailFragment.getInstance()
-        this.gridFragment = GridFragment.getInstance(this.listFragment)
         this.listFragment = ListFragment.getInstance()
+        this.gridFragment = GridFragment.getInstance(this.listFragment)
+        this.detailFragment = DetailFragment.getInstance()
         this.shoppingCartFragment = ShoppingCartFragment.getInstance()
-        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment, this.shoppingCartFragment)
+        this.checkoutFragment = CheckoutFragment.getInstance()
+        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment, this.shoppingCartFragment, this.checkoutFragment)
 
         // initialize frag manager & set main page
         this.fragmentManager = supportFragmentManager
 
-        // set main page
+        // set main page (+ init shopping cart page)
         this.changePage(Page.LIST_PAGE)
 
         // change page listener

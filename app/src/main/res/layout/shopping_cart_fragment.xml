@@ -3,30 +3,43 @@
     xmlns:android = "http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_blue"
-        android:paddingTop="15dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="18dp"
+        android:paddingBottom="20dp">
 
-        <Button
-            android:id="@+id/back"
-            android:layout_width="50dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-5dp"
-            android:drawableLeft="@drawable/back_icon" />
+            android:layout_centerInParent="true"
+            android:text="Shopping Cart"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_bar"
         android:layout_below="@id/top_bar"
-        android:layout_above="@id/bottom_bar"/>
+        android:dividerHeight="1dip"
+        android:divider="@color/gray"/>
 
     <RelativeLayout
         android:id="@+id/bottom_bar"
@@ -47,16 +60,16 @@
             android:textColor="@color/yellow"
             android:textSize="15sp"
             android:layout_alignParentTop="true"/>
-        
+
         <TextView
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp13.000.000"
+            android:layout_below="@id/total"
+            android:text="Rp0"
             android:textColor="@color/yellow"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@id/total"/>
+            android:textStyle="bold" />
         
         <Button
             android:id="@+id/checkout_btn"

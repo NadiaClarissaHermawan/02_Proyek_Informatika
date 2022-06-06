@@ -1,6 +1,7 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,12 @@ import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.ShoppingCartFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 
-import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
     private lateinit var shoppingCartBinding: ShoppingCartFragmentBinding
@@ -43,6 +47,12 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
             this.layout = result.getInt("layout")
         }
 
+        // listener add button dari detailFragment
+        parentFragmentManager.setFragmentResultListener(Page.ADD_TO_SHOPPING_CART, this) {
+                _, result ->
+            var product = Parcels.unwrap<Any>(result.getParcelable("product")) as ProductDetails
+            this.addProduct(product)
+        }
         return this.shoppingCartBinding.root
     }
 
@@ -54,12 +64,17 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
         }
     }
 
-    override fun onClick(p0: View?) {
+    // nambahin produk ke shopping cart
+    fun addProduct(product: ProductDetails) {
+        this.presenter.add(product)
+    }
+
+    override fun onClick(view: View?) {
         // kembali ke page sblmnya
         if (view == this.shoppingCartBinding.back) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, this.layout)
-            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
 
         // ganti ke halaman konfirmasi pembayaran
         } else if (view == this.shoppingCartBinding.checkoutBtn) {
@@ -69,7 +84,20 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
         }
     }
 
-    override fun updateCartList(products: ArrayList<ProductDetails>, newDataOffset: Int) {
-        TODO("Not yet implemented")
+    //salurkan list of shopping cart item dari presenter ke adapter
+    override fun updateCartList(products: ArrayList<ShoppingCartItem>) {
+        this.adapter.updateList(products)
+    }
+
+    //update total harga dari checked items
+    override fun updateTotalPrice(total: Int) {
+        this.shoppingCartBinding.totalPrice.text = this.convertInt(total)
+    }
+
+    // format integer to rupiah
+    fun convertInt(price: Int) : String {
+        val localeID: Locale = Locale("in", "ID")
+        val formats = NumberFormat.getCurrencyInstance(localeID)
+        return formats.format(price)
     }
 }

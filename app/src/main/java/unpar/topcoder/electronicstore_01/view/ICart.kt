@@ -1,7 +1,8 @@
 package unpar.topcoder.electronicstore_01.view
 
-import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 
 interface ICart {
-    fun updateCartList(products: ArrayList<ProductDetails>, newDataOffset: Int)
+    fun updateCartList(products: ArrayList<ShoppingCartItem>)
+    fun updateTotalPrice(total: Int)
 }

@@ -7,7 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class ShoppingCartItem (
     private var product: ProductDetails,
-    private var check_status: Int,
     private var quantity: Int
 ): Parcelable {
 
@@ -15,11 +14,11 @@ class ShoppingCartItem (
         return this.product
     }
 
-    fun getCheckStatus() : Int {
-        return this.check_status
-    }
-
     fun getQuantity() : Int {
         return this.quantity
+    }
+
+    fun setQuantity(num: Int) {
+        this.quantity = num
     }
 }

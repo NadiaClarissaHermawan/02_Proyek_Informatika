@@ -48,6 +48,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         this.gridBinding.layoutTypeGrid.setOnClickListener(this::onClick)
         this.gridBinding.layoutTypeList.setOnClickListener(this::onClick)
         this.gridBinding.buttonLoadMore.setOnClickListener(this::onClick)
+        this.gridBinding.cart1.setOnClickListener(this::onClick)
 
         // add first 5 products
         presenter.updateGrid(this.dataOffset, this.dataOffset + 4)
