@@ -3,12 +3,12 @@ package unpar.topcoder.electronicstore_01.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-//model including constructor
+// model including constructor
 @Parcelize
 class ShoppingCartItem (
     private var product: ProductDetails,
     private var quantity: Int
-): Parcelable {
+) : Parcelable {
 
     fun getProduct() : ProductDetails {
         return this.product
