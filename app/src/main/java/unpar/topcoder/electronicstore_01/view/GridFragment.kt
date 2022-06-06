@@ -17,7 +17,12 @@ import unpar.topcoder.electronicstore_01.R
 
 
 
-class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterView.OnItemSelectedListener {
+class GridFragment :
+    Fragment(),
+    View.OnClickListener,
+    GridInterface,
+    AdapterView.OnItemSelectedListener
+{
     private lateinit var gridBinding: ProductGridFragmentBinding
     private lateinit var presenter: GridPresenter
     private lateinit var adapter: GridAdapter
@@ -31,11 +36,11 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
         savedInstanceState: Bundle?
     ) : View? {
         // bind
-        this.gridBinding=ProductGridFragmentBinding.inflate(inflater, container, false)
+        this.gridBinding = ProductGridFragmentBinding.inflate(inflater, container, false)
 
         // declare presenter, adapter
-        this.presenter= GridPresenter(this)
-        this.adapter=GridAdapter(requireActivity(), this.presenter)
+        this.presenter = GridPresenter(this)
+        this.adapter = GridAdapter(requireActivity(), this.presenter)
         this.gridBinding.lstProducts.adapter = this.adapter
 
         // setup spinner category
@@ -97,7 +102,11 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.presenter.changeCategoryFilter(p2 - 1, this.dataOffset, this.gridBinding.searchBar.text.toString())
+        this.presenter.changeCategoryFilter(
+            p2 - 1,
+            this.dataOffset,
+            this.gridBinding.searchBar.text.toString()
+        )
     }
 
     // salurkan data yang akan ditampilkan ke adapter & sinkronisasi isi produk ke list fragment
@@ -127,7 +136,7 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     companion object {
         fun getInstance(listFragment: ListFragment) : GridFragment {
             val instance = GridFragment()
-            instance.listFragment=listFragment
+            instance.listFragment = listFragment
             return instance
         }
     }
@@ -136,7 +145,8 @@ class GridFragment : Fragment(), View.OnClickListener, GridInterface, AdapterVie
     fun setupSpinner() {
         val spinnr = this.gridBinding.dropdownCategory
         val spinnerValues = arrayOf<String>("All", "Smartphone", "Tablet", "Watches", "Galaxy Buds")
-        val adapter : ArrayAdapter<*> = ArrayAdapter<Any>(requireContext(), R.layout.spinner_layout, spinnerValues)
+        val adapter : ArrayAdapter<*> =
+            ArrayAdapter<Any>(requireContext(), R.layout.spinner_layout, spinnerValues)
         adapter.setDropDownViewResource(R.layout.spinner_layout)
         spinnr.adapter = adapter
         spinnr.onItemSelectedListener = this
