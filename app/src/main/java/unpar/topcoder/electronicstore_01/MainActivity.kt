@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gridFragment: GridFragment
     private lateinit var listFragment: ListFragment
     private lateinit var shoppingCartFragment: ShoppingCartFragment
-    private lateinit var checkoutFragment : CheckoutFragment
+    private lateinit var checkoutFragment: CheckoutFragment
+    private lateinit var addressManagementFragment: 
 
     // constructor
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -43,7 +43,6 @@ class ShoppingCartPresenter(private val ui: ICart) {
         this.updateToAdapter()
     }
 
-
     //delete item from shopping cart
     fun delete(product: ShoppingCartItem) {
         this.products.remove(product)
@@ -80,8 +79,13 @@ class ShoppingCartPresenter(private val ui: ICart) {
         this.calculatePrice()
     }
 
-    // clear the checked shopping cart item
-    fun clearChecked() {
-        this.checked.clear()
+    // cari tau berapa item yg akan di checkout
+    fun getCheckedSize() : Int {
+        return this.checked.size
+    }
+
+    // ambil seluruh produk yg di check
+    fun getChecked() : ArrayList<ShoppingCartItem> {
+        return this.checked
     }
 }

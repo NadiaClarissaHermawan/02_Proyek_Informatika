@@ -16,6 +16,7 @@ class ShoppingCartAdapter(
     private var activity: Activity,
     private var presenter: ShoppingCartPresenter
     ) : BaseAdapter() {
+
     private lateinit var shoppingCartEntryBinding: ShoppingCartEntryBinding
     private var prods: ArrayList<ShoppingCartItem> = ArrayList()
 
@@ -49,11 +50,11 @@ class ShoppingCartAdapter(
         return this.shoppingCartEntryBinding.root
     }
 
-    // format integer to rupiah
-    fun convertInt(price: Int) : String {
-        val localeID: Locale = Locale("in", "ID")
-        val formats = NumberFormat.getCurrencyInstance(localeID)
-        return formats.format(price)
+    // terima updated product list dari fragment
+    fun updateList(products: ArrayList<ShoppingCartItem>) {
+        this.prods = ArrayList()
+        this.prods.addAll(products)
+        notifyDataSetChanged()
     }
 
     // show prods details to layout
@@ -79,10 +80,10 @@ class ShoppingCartAdapter(
         }
     }
 
-    // terima updated product list dari fragment
-    fun updateList(products: ArrayList<ShoppingCartItem>) {
-        this.prods = ArrayList()
-        this.prods.addAll(products)
-        notifyDataSetChanged()
+    // format integer to rupiah
+    fun convertInt(price: Int) : String {
+        val localeID: Locale = Locale("in", "ID")
+        val formats = NumberFormat.getCurrencyInstance(localeID)
+        return formats.format(price)
     }
 }

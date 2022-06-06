@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,6 +56,7 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
         return this.shoppingCartBinding.root
     }
 
+    //click listener action
     override fun onClick(view: View?) {
         // kembali ke page sblmnya
         if (view == this.shoppingCartBinding.back) {
@@ -62,11 +64,19 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
             pg.putInt(Page.PAGE, this.layout)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
 
-            // ganti ke halaman konfirmasi pembayaran
+        // ganti ke halaman konfirmasi pembayaran
         } else if (view == this.shoppingCartBinding.checkoutBtn) {
-            var pg = Bundle()
-            pg.putInt(Page.PAGE, Page.CHECK_OUT_PAGE)
-            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+            if (this.presenter.getCheckedSize() > 0) {
+                var pg = Bundle()
+                pg.putInt(Page.PAGE, Page.CHECK_OUT_PAGE)
+                parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)
+
+                var checkout = Bundle()
+                checkout.putParcelable("checkedProds", Parcels.wrap(this.presenter.getChecked()))
+                parentFragmentManager.setFragmentResult(Page.CHANGE_TO_CHECKOUT_LISTENER, checkout)
+            } else {
+                Snackbar.make(this.shoppingCartBinding.root, "Please check any product to continue.", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -99,6 +109,4 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
         val formats = NumberFormat.getCurrencyInstance(localeID)
         return formats.format(price)
     }
-
-
 }
