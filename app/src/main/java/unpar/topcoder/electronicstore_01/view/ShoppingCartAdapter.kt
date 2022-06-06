@@ -4,15 +4,18 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import unpar.topcoder.electronicstore_01.databinding.ShoppingCartEntryBinding
-import unpar.topcoder.electronicstore_01.model.ProductDetails
-import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
-import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import unpar.topcoder.electronicstore_01.databinding.ShoppingCartEntryBinding
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
+import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
 
-class ShoppingCartAdapter(private var activity: Activity, private var presenter: ShoppingCartPresenter) : BaseAdapter() {
+
+class ShoppingCartAdapter(
+    private var activity: Activity,
+    private var presenter: ShoppingCartPresenter
+    ) : BaseAdapter() {
     private lateinit var shoppingCartEntryBinding: ShoppingCartEntryBinding
     private var prods: ArrayList<ShoppingCartItem> = ArrayList()
 
@@ -56,8 +59,8 @@ class ShoppingCartAdapter(private var activity: Activity, private var presenter:
     // show prods details to layout
     fun updateLayout(currProduct: ShoppingCartItem) {
         this.shoppingCartEntryBinding.productName.text = currProduct.getProduct().getNama()
-        this.shoppingCartEntryBinding.productCategory.text = ""+currProduct.getProduct().getKategori()
-        this.shoppingCartEntryBinding.productCondition.text = ""+currProduct.getProduct().getKondisi()+"%"
+        this.shoppingCartEntryBinding.productCategory.text = "" + currProduct.getProduct().getKategori()
+        this.shoppingCartEntryBinding.productCondition.text = "" + currProduct.getProduct().getKondisi() + "%"
         this.shoppingCartEntryBinding.productPrice.text = this.convertInt(currProduct.getProduct().getHarga())
         this.shoppingCartEntryBinding.productImage.setImageResource(currProduct.getProduct().getImageSource())
         this.shoppingCartEntryBinding.quantity.text = currProduct.getQuantity().toString()
