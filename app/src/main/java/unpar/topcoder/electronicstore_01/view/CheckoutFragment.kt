@@ -26,6 +26,14 @@ class CheckoutFragment : Fragment(), View.OnClickListener {
         return this.checkOutBinding.root
     }
 
+    override fun onClick(view: View?) {
+        if (view == this.checkOutBinding.back) {
+            var pg = Bundle()
+            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+        }
+    }
+
     // singleton constructor
     companion object {
         fun getInstance () : CheckoutFragment {
@@ -34,11 +42,5 @@ class CheckoutFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onClick(view: View?) {
-        if (view == this.checkOutBinding.back) {
-            var pg = Bundle()
-            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
-            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
-        }
-    }
+
 }
