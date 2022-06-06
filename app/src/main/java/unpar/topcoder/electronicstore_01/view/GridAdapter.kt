@@ -37,14 +37,13 @@ class GridAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?) : View {
-        var convertView: View?=convertView
-        if(convertView==null) {
+        var convertView: View? = convertView
+        if (convertView == null) {
             this.gridItemBinding = ProductGridEntryBinding.inflate(this.activity.layoutInflater)
             convertView = this.gridItemBinding.root
             convertView.setTag(this.gridItemBinding)
-        }
-        else {
-            this.gridItemBinding= convertView.tag as ProductGridEntryBinding
+        } else {
+            this.gridItemBinding = convertView.tag as ProductGridEntryBinding
         }
 
         this.currentProduct = this.getItem(position)
@@ -64,8 +63,8 @@ class GridAdapter(
 
     // function update layout (buat recycle)
     fun updateLayout(currentProduct: ProductDetails) {
-        this.gridItemBinding.productName.text=this.currentProduct.getNama()
-        this.gridItemBinding.productCategory.text="" + this.currentProduct.getKategori()
+        this.gridItemBinding.productName.text = this.currentProduct.getNama()
+        this.gridItemBinding.productCategory.text = "" + this.currentProduct.getKategori()
         this.gridItemBinding.productCondition.text = "" + this.currentProduct.getKondisi() + "%"
         this.gridItemBinding.productPrice.text = this.convertInt(currentProduct.getHarga())
         this.gridItemBinding.productImage.setImageResource(this.currentProduct.getImageSource())
