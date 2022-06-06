@@ -2,7 +2,6 @@
 <resources>
     <!--  Custom Color -->
     <color name="dark_blue">#160B57</color>
-
     <color name="medium_blue">#1229B0</color>
     <color name="light_blue">#2391FF</color>
     <color name="yellow">#F1AB19</color>
@@ -10,4 +9,5 @@
     <color name="black">#000000</color>
     <color name="oker">#fcba03</color>
     <color name="gray">#D9D9D9</color>
+    <color name="light_gray">#F6F0F0</color>
 </resources>

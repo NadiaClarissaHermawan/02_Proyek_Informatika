@@ -4,11 +4,10 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.google.android.material.snackbar.Snackbar
 import unpar.topcoder.electronicstore_01.databinding.CheckOutEntryBinding
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.CheckoutPresenter
-import java.text.NumberFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class CheckoutAdapter(
@@ -64,7 +63,11 @@ class CheckoutAdapter(
         this.checkoutItemBinding.quantity.text = currProduct.getQuantity().toString()
 
         this.checkoutItemBinding.min.setOnClickListener {
-            this.presenter.operate(1, currProduct)
+            if (currProduct.getQuantity() == 1) {
+                Snackbar.make(this.checkoutItemBinding.root, "The minimum amount to purchase is 1.", Snackbar.LENGTH_SHORT).show()
+            } else {
+                this.presenter.operate(1, currProduct)
+            }
         }
         this.checkoutItemBinding.plus.setOnClickListener {
             this.presenter.operate(0, currProduct)

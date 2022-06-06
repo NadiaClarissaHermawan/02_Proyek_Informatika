@@ -1,6 +1,7 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
 
         //set click listener
         this.checkOutBinding.back.setOnClickListener(this::onClick)
+        this.checkOutBinding.chooseAddressBtn.setOnClickListener(this::onClick)
         this.checkOutBinding.payBtn.setOnClickListener(this::onClick)
 
         // buat, set adapter & presenter untuk tampilkan & operasikan list
@@ -56,9 +58,7 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
     override fun onClick(view: View?) {
         // back button
         if (view == this.checkOutBinding.back) {
-            var pg = Bundle()
-            pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
-            parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+            this.moveToPreviousFragment()
         // pay
         } else if (view == this.checkOutBinding.payBtn) {
 
@@ -78,5 +78,15 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
     // updating total price after any operations
     override fun updateTotalPrice(total: Int) {
         this.checkOutBinding.totalPrice.text = this.presenter.convertInt(total)
+    }
+
+    // check out cart is empty, move to shopping cart fragment
+    override fun moveToPreviousFragment() {
+        var pg = Bundle()
+        pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+        parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+
+        var up = Bundle()
+        parentFragmentManager.setFragmentResult(Page.UPDATE_FROM_CHECK_OUT, up)
     }
 }

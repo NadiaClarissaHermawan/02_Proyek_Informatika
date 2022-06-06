@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var listFragment: ListFragment
     private lateinit var shoppingCartFragment: ShoppingCartFragment
     private lateinit var checkoutFragment: CheckoutFragment
-    private lateinit var addressManagementFragment: 
+    private lateinit var addressManagementFragment: AddressManagementFragment
 
     // constructor
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         this.detailFragment = DetailFragment.getInstance()
         this.shoppingCartFragment = ShoppingCartFragment.getInstance()
         this.checkoutFragment = CheckoutFragment.getInstance()
-        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment, this.shoppingCartFragment, this.checkoutFragment)
+        this.addressManagementFragment = AddressManagementFragment.getInstance()
+        this.arrFragment = arrayOf(this.listFragment, this.gridFragment, this.detailFragment, this.shoppingCartFragment, this.checkoutFragment, this.addressManagementFragment)
 
         // initialize frag manager & set main page
         this.fragmentManager = supportFragmentManager

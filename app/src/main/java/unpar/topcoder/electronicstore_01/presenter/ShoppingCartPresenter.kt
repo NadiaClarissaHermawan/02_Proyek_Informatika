@@ -3,6 +3,9 @@ package unpar.topcoder.electronicstore_01.presenter
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.view.ICart
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ShoppingCartPresenter(private val ui: ICart) {
     private var products: ArrayList<ShoppingCartItem> = ArrayList()
@@ -87,5 +90,12 @@ class ShoppingCartPresenter(private val ui: ICart) {
     // ambil seluruh produk yg di check
     fun getChecked() : ArrayList<ShoppingCartItem> {
         return this.checked
+    }
+
+    // format integer to rupiah
+    fun convertInt(price: Int) : String {
+        val localeID: Locale = Locale("in", "ID")
+        val formats = NumberFormat.getCurrencyInstance(localeID)
+        return formats.format(price)
     }
 }

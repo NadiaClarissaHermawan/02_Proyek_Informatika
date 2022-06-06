@@ -62,7 +62,7 @@ class ShoppingCartAdapter(
         this.shoppingCartEntryBinding.productName.text = currProduct.getProduct().getNama()
         this.shoppingCartEntryBinding.productCategory.text = "" + currProduct.getProduct().getKategori()
         this.shoppingCartEntryBinding.productCondition.text = "" + currProduct.getProduct().getKondisi() + "%"
-        this.shoppingCartEntryBinding.productPrice.text = this.convertInt(currProduct.getProduct().getHarga())
+        this.shoppingCartEntryBinding.productPrice.text = this.presenter.convertInt(currProduct.getProduct().getHarga())
         this.shoppingCartEntryBinding.productImage.setImageResource(currProduct.getProduct().getImageSource())
         this.shoppingCartEntryBinding.quantity.text = currProduct.getQuantity().toString()
 
@@ -78,12 +78,5 @@ class ShoppingCartAdapter(
         this.shoppingCartEntryBinding.trashBtn.setOnClickListener {
             this.presenter.delete(currProduct)
         }
-    }
-
-    // format integer to rupiah
-    fun convertInt(price: Int) : String {
-        val localeID: Locale = Locale("in", "ID")
-        val formats = NumberFormat.getCurrencyInstance(localeID)
-        return formats.format(price)
     }
 }

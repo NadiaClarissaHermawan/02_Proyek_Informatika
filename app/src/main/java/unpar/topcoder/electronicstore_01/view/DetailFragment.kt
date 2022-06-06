@@ -67,8 +67,6 @@ class DetailFragment : Fragment(), View.OnClickListener {
                 var product = Bundle()
                 product.putParcelable("product", Parcels.wrap(this.currProductDetails))
                 parentFragmentManager.setFragmentResult(Page.ADD_TO_SHOPPING_CART, product)
-
-                Snackbar.make(this.detailBinding.root, "This item has been added to your shopping cart", Snackbar.LENGTH_SHORT).show()
             }
         }
     }

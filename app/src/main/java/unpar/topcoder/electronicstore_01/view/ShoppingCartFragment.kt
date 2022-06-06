@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
-import java.text.NumberFormat
-import java.util.*
 import kotlin.collections.ArrayList
 import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.ShoppingCartFragmentBinding
@@ -15,7 +13,8 @@ import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
-
+import android.view.Gravity
+import com.google.android.material.snackbar.Snackbar
 
 class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
     private lateinit var shoppingCartBinding: ShoppingCartFragmentBinding
@@ -53,6 +52,14 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
             var product = Parcels.unwrap<Any>(result.getParcelable("product")) as ProductDetails
             this.addProduct(product)
         }
+
+        // listener update checked
+        parentFragmentManager.setFragmentResultListener(Page.UPDATE_FROM_CHECK_OUT, this) {
+                _, result ->
+            this.presenter.updateToAdapter()
+            this.presenter.calculatePrice()
+        }
+
         return this.shoppingCartBinding.root
     }
 
@@ -75,7 +82,7 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
                 checkout.putParcelable("checkedProds", Parcels.wrap(this.presenter.getChecked()))
                 parentFragmentManager.setFragmentResult(Page.CHANGE_TO_CHECKOUT_LISTENER, checkout)
             } else {
-                Snackbar.make(this.shoppingCartBinding.root, "Please check any product to continue.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(this.shoppingCartBinding.root, "Please check any product to continue", Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -87,7 +94,7 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
 
     // update total harga dari checked items
     override fun updateTotalPrice(total: Int) {
-        this.shoppingCartBinding.totalPrice.text = this.convertInt(total)
+        this.shoppingCartBinding.totalPrice.text = this.presenter.convertInt(total)
     }
 
     // singleton constructor
@@ -101,12 +108,5 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
     // nambahin produk ke shopping cart
     fun addProduct(product: ProductDetails) {
         this.presenter.add(product)
-    }
-
-    // format integer to rupiah
-    fun convertInt(price: Int) : String {
-        val localeID: Locale = Locale("in", "ID")
-        val formats = NumberFormat.getCurrencyInstance(localeID)
-        return formats.format(price)
     }
 }

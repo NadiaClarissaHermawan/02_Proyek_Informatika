@@ -1,5 +1,7 @@
 package unpar.topcoder.electronicstore_01.presenter
 
+import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.view.ICheckout
 import java.text.NumberFormat
@@ -27,26 +29,17 @@ class CheckoutPresenter(private val ui: ICheckout) {
         var size = this.products.size
 
         for (i in 0..(size - 1)) {
-            if (this.products[i].getProduct().equals(product)) {
+            if (this.products[i].equals(product)) {
                 if (operations == 0) {
                     this.products[i].setQuantity(this.products[i].getQuantity() + 1)
                 } else {
-                    if (this.products[i].getQuantity() == 1) {
-                        this.delete(product)
-                    } else {
-                        this.products[i].setQuantity(this.products[i].getQuantity() - 1)
-                    }
+                    this.products[i].setQuantity(this.products[i].getQuantity() - 1)
                 }
                 break
             }
         }
         this.calculatePrice()
         this.updateToAdapter()
-    }
-
-    // delete item from shopping cart
-    fun delete(product: ShoppingCartItem) {
-        this.products.remove(product)
     }
 
     // calculate the total price

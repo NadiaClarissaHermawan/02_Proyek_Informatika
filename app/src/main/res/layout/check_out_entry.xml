@@ -4,39 +4,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/product_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"/>
-    
-    <TextView
-        android:id="@+id/product_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/dark_blue"
-        android:textSize="15sp"
-        android:layout_toRightOf="@id/product_image"
-        android:layout_marginLeft="15dp"
-        android:text="product_name"
-        android:maxLines="2"
-        android:minLines="2"
-        android:layout_alignTop="@id/product_image"/>
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
 
-    <TextView
-        android:id="@+id/product_price"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/product_name"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/product_image"
-        android:layout_marginLeft="15dp"
-        android:text="Rpxxx.xxx.xxx"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/dark_blue"/>
+        android:layout_toLeftOf="@id/plusmin_wrap"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:minLines="1"
+            android:text="product_name"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_name"
+            android:text="Rpxxx.xxx.xxx"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/plusmin_wrap"
@@ -48,12 +55,13 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:id="@+id/min"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/min_btn"
-            android:text="-" />
+            android:src="@drawable/min"
+            android:padding="5dp"/>
 
         <TextView
             android:id="@+id/quantity"
@@ -65,10 +73,12 @@
             android:text="1"
             android:textAlignment="center"/>
 
-        <Button
+        <ImageView
             android:id="@+id/plus"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/plus_btn"/>
+            android:background="@drawable/plus_btn"
+            android:src="@drawable/add"
+            android:padding="5dp"/>
     </LinearLayout>
 </RelativeLayout>

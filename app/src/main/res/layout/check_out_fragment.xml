@@ -105,18 +105,19 @@
     <View
         android:id="@+id/line2"
         android:layout_width="fill_parent"
-        android:layout_height="4dip"
+        android:layout_height="6dip"
         android:background="@color/gray"
         android:layout_below="@id/address_wrap"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginTop="5dp"/>
 
     <ListView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/address_wrap"
-        android:layout_above="@id/bottom_bar"/>
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/line2"
+        android:divider="@color/white"
+        android:dividerHeight="2dip"/>
 
     <RelativeLayout
         android:id="@+id/bottom_bar"
@@ -156,7 +157,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/white_btn"
             android:text="Pay"
-            android:textColor="@color/yellow"
+            android:textColor="@color/dark_blue"
             android:textSize="15sp"
             app:backgroundTint="@null" />
     </RelativeLayout>
