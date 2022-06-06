@@ -54,6 +54,8 @@ class ShoppingCartPresenter(private val ui: ICart) {
     //delete item from shopping cart
     fun delete(product: ShoppingCartItem) {
         this.products.remove(product)
+        this.checked.remove(product)
+        this.calculatePrice()
         this.updateToAdapter()
     }
 
