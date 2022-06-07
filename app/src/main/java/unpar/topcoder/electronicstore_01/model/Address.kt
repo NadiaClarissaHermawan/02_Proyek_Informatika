@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 class Address(private var nama: String,
               private var no_hp:String,
               private var alamat: String,
-              private var isDefault: Boolean
+              private var isDefault: Int
 ) : Parcelable {
     fun getNama() : String{
         return this.nama;
@@ -21,7 +21,7 @@ class Address(private var nama: String,
         return this.alamat;
     }
 
-    fun getIsDefault() : Boolean{
+    fun getIsDefault() : Int{
         return this.isDefault;
     }
 
@@ -37,7 +37,7 @@ class Address(private var nama: String,
         this.alamat = alamat
     }
 
-    fun setIsDefault(isDefault: Boolean) {
+    fun setIsDefault(isDefault: Int) {
         this.isDefault = isDefault
     }
 }

@@ -81,18 +81,22 @@
         android:layout_toLeftOf="@id/layout_type_list"
         android:background="@drawable/dark_blue_btn"
         android:drawableLeft="@drawable/grid_icon"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        app:backgroundTint="@null"/>
 
     <GridView
         android:id="@+id/lst_products"
         android:layout_width="match_parent"
         android:layout_height="570dp"
-        android:numColumns="3"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="10dp"
-        android:layout_centerInParent="true"
         android:layout_below="@id/layout_type_list"
-        android:layout_margin="20dp"/>
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:horizontalSpacing="8dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp" />
 
     <Button
         android:id="@+id/button_load_more"
@@ -104,5 +108,6 @@
         android:background="@drawable/dark_blue_btn"
         android:text="Load More"
         android:textColor="@color/yellow"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:backgroundTint="@null"/>
 </RelativeLayout>

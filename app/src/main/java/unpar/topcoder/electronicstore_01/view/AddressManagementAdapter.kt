@@ -13,7 +13,7 @@ class AddressManagementAdapter (
     private var activity: Activity,
     private var presenter: AddressManagementPresenter
 
-) : BaseAdapter(), View.OnClickListener{
+) : BaseAdapter() {
     private  lateinit var chooseAddressEntryBinding: ChooseAddressEntryBinding
     private var address: MutableList<Address> = ArrayList()
     private lateinit var currentAddress: Address
@@ -41,20 +41,11 @@ class AddressManagementAdapter (
             this.chooseAddressEntryBinding = convertView.tag as ChooseAddressEntryBinding
         }
 
+        //get the current item
         this.currentAddress = this.getItem(position)
         this.updateLayout(this.currentAddress)
 
         return this.chooseAddressEntryBinding.root
-    }
-
-    override fun onClick(v: View?) {
-
-        if(v == this.chooseAddressEntryBinding.editBtn) {
-            TODO("on click untuk edit button belum di implement")
-        }
-        else if (v == this.chooseAddressEntryBinding.trashBtn) {
-            TODO("on click untuk delete belum di implement")
-        }
     }
 
     // function update layout (buat recycle)
@@ -62,8 +53,16 @@ class AddressManagementAdapter (
         this.chooseAddressEntryBinding.customerAddress.text = this.currentAddress.getAlamat()
         this.chooseAddressEntryBinding.customerContact.text = this.currentAddress.getNoHp()
         this.chooseAddressEntryBinding.customerName.text = this.currentAddress.getNama()
-        this.chooseAddressEntryBinding.editBtn.setOnClickListener(this::onClick)
-        this.chooseAddressEntryBinding.trashBtn.setOnClickListener((this::onClick))
+
+        if (this.currentAddress.getIsDefault() == 1) this.chooseAddressEntryBinding.defaultSign.visibility = View.VISIBLE
+        else this.chooseAddressEntryBinding.defaultSign.visibility = View.INVISIBLE
+
+        this.chooseAddressEntryBinding.editBtn.setOnClickListener {
+            this.presenter.callEditPopup(currentAddress)
+        }
+        this.chooseAddressEntryBinding.trashBtn.setOnClickListener {
+            this.presenter.delete(currentAddress)
+        }
 
     }
 

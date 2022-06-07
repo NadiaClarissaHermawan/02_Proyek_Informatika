@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.CheckOutFragmentBinding
+import unpar.topcoder.electronicstore_01.model.Address
 import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
@@ -43,6 +44,16 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
                 _, result ->
             this.presenter.initialProds(Parcels.unwrap<Any>(result.getParcelable("checkedProds")) as ArrayList<ShoppingCartItem>)
         }
+
+        // listener untuk terima default address
+        parentFragmentManager.setFragmentResultListener(Page.RECEIVE_DEFAULT_ADDRESS, this) {
+                _, result ->
+            var defaultAddress = Parcels.unwrap<Any>(result.getParcelable("address")) as Address
+            this.checkOutBinding.customerName.text = defaultAddress.getNama()
+            this.checkOutBinding.customerContact.text = defaultAddress.getNoHp()
+            this.checkOutBinding.customerAddress.text = defaultAddress.getAlamat()
+        }
+
         return this.checkOutBinding.root
     }
 

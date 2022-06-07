@@ -4,24 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
-    android:padding="15dp">
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/customer_name"
+    <RelativeLayout
+        android:id="@+id/name_wrap"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:minLines="1"
-        android:text="Customer 1"
-        android:textColor="@color/dark_blue"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:minLines="1"
+            android:text="Customer 1"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/default_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/customer_name"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/dark_blue_btn"
+            android:text="Default"
+            android:textColor="@color/yellow"
+            android:textSize="10sp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/customer_contact"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/customer_name"
+        android:layout_below="@id/name_wrap"
         android:text="0812392813"
         android:textSize="15sp"
         android:textColor="@color/dark_blue"

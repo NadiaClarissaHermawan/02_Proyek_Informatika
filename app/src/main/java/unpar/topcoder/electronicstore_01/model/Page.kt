@@ -16,6 +16,7 @@ object Page {
     const val CHANGE_TO_CHECKOUT_LISTENER = "changeToCheckout"
     const val ADD_TO_SHOPPING_CART = "addToShoppingCart"
     const val UPDATE_FROM_CHECK_OUT = "updateCheckout"
+    const val RECEIVE_DEFAULT_ADDRESS = "receiveAddress"
     const val SYNC_LISTENER = "sync"
     const val PAGE = "page"
 }

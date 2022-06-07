@@ -62,9 +62,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/line"
+            android:layout_marginTop="5dp"
             android:maxLines="1"
             android:minLines="1"
-            android:text="Customer 1"
             android:textColor="@color/dark_blue"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -76,7 +76,7 @@
             android:layout_below="@id/customer_name"
             android:maxLines="1"
             android:minLines="1"
-            android:text="081323123"
+            android:text="Please kindly add the shipment address.."
             android:textColor="@color/dark_blue"
             android:textSize="15sp" />
 
@@ -87,7 +87,6 @@
             android:layout_below="@id/customer_contact"
             android:maxLines="2"
             android:minLines="1"
-            android:text="Jalan Kenanga Indah 4 No.13. Bandung"
             android:textColor="@color/dark_blue"
             android:textSize="15sp" />
 

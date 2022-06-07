@@ -36,7 +36,9 @@
         android:id="@+id/list_address"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top_bar"/>
+        android:layout_below="@id/top_bar"
+        android:divider="@color/gray"
+        android:dividerHeight="2dip"/>
 
     <!--Floating button-->
     <androidx.coordinatorlayout.widget.CoordinatorLayout

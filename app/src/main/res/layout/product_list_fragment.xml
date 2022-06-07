@@ -62,14 +62,15 @@
         android:id="@+id/layout_type_list"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:paddingLeft="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentRight="true"
         android:layout_below="@id/top_bar"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/dark_blue_btn"
-        android:drawableLeft="@drawable/list_icon" />
+        android:drawableLeft="@drawable/list_icon"
+        android:paddingLeft="3dp"
+        app:backgroundTint="@null"/>
 
     <Button
         android:id="@+id/layout_type_grid"
@@ -150,12 +151,13 @@
         android:id="@+id/button_load_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:background="@drawable/dark_blue_btn"
         android:text="Load More"
         android:textColor="@color/yellow"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:backgroundTint="@null"/>
 </RelativeLayout>
 

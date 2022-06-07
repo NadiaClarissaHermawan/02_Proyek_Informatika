@@ -69,7 +69,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/dark_blue_btn"
-        android:drawableLeft="@drawable/add_icon" />
+        android:drawableLeft="@drawable/add_icon"
+        app:backgroundTint="@null"/>
 
     <TextView
         android:id="@+id/product_name"
