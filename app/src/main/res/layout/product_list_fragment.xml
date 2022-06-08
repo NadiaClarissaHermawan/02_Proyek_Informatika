@@ -1,163 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--Container content tengah-->
     <RelativeLayout
-        android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_blue"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/back" />
+        <RelativeLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_blue"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
-        <EditText
-            android:id="@+id/search_bar"
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back" />
+
+            <EditText
+                android:id="@+id/search_bar"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border"
+                android:drawableLeft="@drawable/search_icon"
+                android:hint="Search product name.."
+                android:padding="8dp"
+                android:textColor="@color/dark_blue"
+                android:textColorHint="@color/gray"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/cart1"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/cart" />
+        </RelativeLayout>
+
+        <Spinner
+            android:id="@+id/dropdown_category"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_below="@id/top_bar"
             android:layout_marginLeft="20dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
             android:background="@drawable/border"
-            android:drawableLeft="@drawable/search_icon"
-            android:hint="Search product name.."
-            android:padding="8dp"
-            android:textColor="@color/dark_blue"
-            android:textColorHint="@color/gray"
-            android:textSize="15sp" />
+            android:padding="5dp" />
 
-        <ImageView
-            android:id="@+id/cart1"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+        <Button
+            android:id="@+id/layout_type_list"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/top_bar"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/cart" />
+            android:background="@drawable/dark_blue_btn"
+            android:drawableLeft="@drawable/list_icon"
+            android:paddingLeft="3dp"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:id="@+id/layout_type_grid"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/top_bar"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@id/layout_type_list"
+            android:background="@drawable/grey_btn"
+            android:drawableLeft="@drawable/grid_icon"
+            android:paddingLeft="8dp"
+            app:backgroundTint="@null"/>
+
+        <LinearLayout
+            android:id="@+id/column_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="5dp"
+            android:layout_below="@id/layout_type_list"
+            android:background="@color/dark_blue">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:text="Product Name"
+                android:textSize="15sp"
+                android:textColor="@color/yellow"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/product_category"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:text="Category"
+                android:textSize="15sp"
+                android:textColor="@color/yellow"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:text="Price"
+                android:textSize="15sp"
+                android:textColor="@color/yellow"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/product_condition"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:text="Condition"
+                android:textSize="15sp"
+                android:textColor="@color/yellow"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lst_products"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_below="@id/column_title"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.7"></ListView>
+
+        <Button
+            android:id="@+id/button_load_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/dark_blue_btn"
+            android:text="Load More"
+            android:textColor="@color/yellow"
+            android:textSize="15sp"
+            app:backgroundTint="@null"/>
     </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/dropdown_category"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_bar"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border"
-        android:padding="5dp" />
-
-    <Button
-        android:id="@+id/layout_type_list"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/top_bar"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/dark_blue_btn"
-        android:drawableLeft="@drawable/list_icon"
-        android:paddingLeft="3dp"
-        app:backgroundTint="@null"/>
-
-    <Button
-        android:id="@+id/layout_type_grid"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/top_bar"
-        android:layout_marginTop="8dp"
-        android:layout_toLeftOf="@id/layout_type_list"
-        android:background="@drawable/grey_btn"
-        android:drawableLeft="@drawable/grid_icon"
-        android:paddingLeft="8dp"
-        app:backgroundTint="@null"/>
-
-    <LinearLayout
-        android:id="@+id/column_title"
+    <!--Splash screen-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splash_container"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="5dp"
-        android:layout_below="@id/layout_type_list"
-        android:background="@color/dark_blue">
+        android:layout_height="match_parent"
+        tools:context=".SplashScreenActivity">
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:text="Product Name"
-            android:textSize="15sp"
-            android:textColor="@color/yellow"
-            android:textAlignment="center"/>
+        <!--moving splash screen background-->
+        <ImageView
+            android:id="@+id/splash_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="910dp"
+            android:src="@drawable/splash_background"
+            app:layout_constraintVertical_bias="0"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/product_category"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:text="Category"
-            android:textSize="15sp"
-            android:textColor="@color/yellow"
-            android:textAlignment="center"/>
+        <!--logo-->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".47"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
-            android:text="Price"
-            android:textSize="15sp"
-            android:textColor="@color/yellow"
-            android:textAlignment="center"/>
+        <!--App name-->
+        <ImageView
+            android:id="@+id/app_name"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:src="@drawable/title"
+            app:layout_constraintVertical_bias=".0001"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"/>
 
-        <TextView
-            android:id="@+id/product_condition"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:text="Condition"
-            android:textSize="15sp"
-            android:textColor="@color/yellow"
-            android:textAlignment="center"/>
-    </LinearLayout>
+        <!--on boarding page (slides)-->
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/lst_products"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_below="@id/column_title"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="0.7"></ListView>
+        </androidx.viewpager.widget.ViewPager>
 
-    <Button
-        android:id="@+id/button_load_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/dark_blue_btn"
-        android:text="Load More"
-        android:textColor="@color/yellow"
-        android:textSize="15sp"
-        app:backgroundTint="@null"/>
-</RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+
+
 

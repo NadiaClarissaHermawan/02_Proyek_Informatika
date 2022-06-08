@@ -21,6 +21,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var shoppingCartFragment: ShoppingCartFragment
     private lateinit var checkoutFragment: CheckoutFragment
     private lateinit var addressManagementFragment: AddressManagementFragment
+    private var backPointer = intArrayOf(
+        Page.EXIT_PAGE,
+        Page.EXIT_PAGE,
+        Page.LIST_PAGE,
+        Page.DETAIL_PAGE,
+        Page.SHOPPING_CART_PAGE,
+        Page.CHECK_OUT_PAGE
+    )
 
     // constructor
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +62,25 @@ class MainActivity : AppCompatActivity() {
 
     // method untuk ganti halaman
     fun changePage(page: Int) {
+        //animations
+        this.fragmentTransaction = this.fragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.slide_in,
+            R.anim.fade_out,
+            R.anim.fade_in,
+            R.anim.slide_out
+        )
+
         // exit
         if (page == Page.EXIT_PAGE) {
             this.exitApp()
         // change page
         } else {
-            this.fragmentTransaction = this.fragmentManager.beginTransaction()
+            if (page == Page.GRID_PAGE && currentFragment == Page.LIST_PAGE ||
+                page == Page.LIST_PAGE && currentFragment == Page.GRID_PAGE ||
+                currentFragment == Page.CHECK_OUT_PAGE && page == Page.SHOPPING_CART_PAGE ||
+                currentFragment == Page.SHOPPING_CART_PAGE && page == Page.DETAIL_PAGE) {
+                this.fragmentTransaction = this.fragmentManager.beginTransaction()
+            }
             if (this.currentFragment != page) {
                 this.fragmentTransaction.hide(arrFragment[this.currentFragment])
             }
@@ -68,14 +89,19 @@ class MainActivity : AppCompatActivity() {
             } else {
                 this.fragmentTransaction.add(R.id.fragment_container, this.arrFragment[page])
             }
-            this.fragmentTransaction.commit()
             this.currentFragment = page
         }
+        this.fragmentTransaction.commit()
     }
 
     // exit applications
     fun exitApp() {
         moveTaskToBack(true)
         finish()
+    }
+
+    // back button pressed
+    override fun onBackPressed() {
+        changePage(backPointer[currentFragment])
     }
 }

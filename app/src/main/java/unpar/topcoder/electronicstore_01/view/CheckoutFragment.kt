@@ -41,7 +41,7 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
 
         // buat, set adapter & presenter untuk tampilkan & operasikan list
         this.presenter = CheckoutPresenter(this)
-        this.adapter = CheckoutAdapter(requireActivity(), this.presenter)
+        this.adapter = CheckoutAdapter(requireActivity(), this.presenter, requireContext())
         this.checkOutBinding.listItem.adapter = this.adapter
 
         // listener dari shopping cart fragment u/ terima checked products
@@ -78,7 +78,7 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
         // pay
         } else if (view == this.checkOutBinding.payBtn) {
             if (this.checkOutBinding.customerName.text.toString().equals("") || this.checkOutBinding.customerName.text.toString().length == 0) {
-                Snackbar.make(this.checkOutBinding.root, "Select the shipment address", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(this.checkOutBinding.root, "Select the shipment address", Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.white)).setTextColor(getResources().getColor(R.color.dark_blue)).show()
             } else {
                 this.paymentOK()
             }

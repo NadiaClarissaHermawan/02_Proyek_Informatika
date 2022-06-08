@@ -1,10 +1,12 @@
 package unpar.topcoder.electronicstore_01.view
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.google.android.material.snackbar.Snackbar
+import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.CheckOutEntryBinding
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.CheckoutPresenter
@@ -12,7 +14,8 @@ import kotlin.collections.ArrayList
 
 class CheckoutAdapter(
     private var activity: Activity,
-    private var presenter: CheckoutPresenter)
+    private var presenter: CheckoutPresenter,
+    private var context: Context)
     : BaseAdapter() {
 
     private lateinit var checkoutItemBinding : CheckOutEntryBinding
@@ -64,7 +67,7 @@ class CheckoutAdapter(
 
         this.checkoutItemBinding.min.setOnClickListener {
             if (currProduct.getQuantity() == 1) {
-                Snackbar.make(this.checkoutItemBinding.root, "The minimum amount to purchase is 1.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(this.checkoutItemBinding.root, "The minimum amount to purchase is 1.", Snackbar.LENGTH_SHORT).setBackgroundTint(context.resources.getColor(R.color.white)).setTextColor(context.resources.getColor(R.color.dark_blue)).show()
             } else {
                 this.presenter.operate(1, currProduct)
             }

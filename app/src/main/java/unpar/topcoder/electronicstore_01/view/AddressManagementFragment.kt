@@ -73,11 +73,14 @@ class AddressManagementFragment :
         if (view == this.chooseAddressBinding.floatingActionButton) {
             this.setupPopupAddress(0)
         } else if (view == this.chooseAddressBinding.back) {
+            var currAddress = Bundle()
             if (this.presenter.getSize() > 0) {
-                var currAddress = Bundle()
                 currAddress.putParcelable("address", Parcels.wrap(this.presenter.getDefaultAddress()))
-                parentFragmentManager.setFragmentResult(Page.RECEIVE_DEFAULT_ADDRESS, currAddress)
+            } else {
+                currAddress.putParcelable("address", Parcels.wrap(Address("", "Please kindly add the shipment address..","",0)))
             }
+            parentFragmentManager.setFragmentResult(Page.RECEIVE_DEFAULT_ADDRESS, currAddress)
+
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.CHECK_OUT_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
@@ -113,7 +116,7 @@ class AddressManagementFragment :
                         }
                         dialog.dismiss()
                     } else {
-                        Snackbar.make(this.chooseAddressBinding.root, "Please fill the form.", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(this.chooseAddressBinding.root, "Please fill the form.", Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.gray)).setTextColor(getResources().getColor(R.color.dark_blue)).show()
                     }
                 })
             .setNegativeButton("Cancel",
