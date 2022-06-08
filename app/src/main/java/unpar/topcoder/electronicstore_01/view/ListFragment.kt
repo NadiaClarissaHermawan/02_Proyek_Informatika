@@ -65,9 +65,9 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
 
     //set splashscreen anim
     fun setSplashAnimation() {
-        this.listBinding.splashBg.animate().translationX((-2800).toFloat()).setDuration(1000).setStartDelay(4000)
-        this.listBinding.logo.animate().translationX((-2050).toFloat()).setDuration(1000).setStartDelay(4000);
-        this.listBinding.appName.animate().translationX((-2050).toFloat()).setDuration(1000).setStartDelay(4000);
+        this.listBinding.splashBg.animate().translationX((-2800).toFloat()).setDuration(500).setStartDelay(4000)
+        this.listBinding.logo.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
+        this.listBinding.appName.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
     }
 
     // salurkan updated product list dari presenter ke adapter untuk ditampilkan

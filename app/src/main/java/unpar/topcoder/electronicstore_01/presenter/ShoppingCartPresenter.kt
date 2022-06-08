@@ -39,7 +39,7 @@ class ShoppingCartPresenter(private val ui: ICart) {
             }
         }
         if (indicator == 0) {
-            var shoppingCartItem = ShoppingCartItem(product, 1)
+            var shoppingCartItem = ShoppingCartItem(product, 1, 0)
             this.products.add(shoppingCartItem)
         }
         this.calculatePrice()
@@ -74,12 +74,26 @@ class ShoppingCartPresenter(private val ui: ICart) {
 
     // add item to checked
     fun check(product: ShoppingCartItem) {
+        var size = this.products.size
         if (this.checked.contains(product)) {
             this.checked.remove(product)
+            for (i in 0..(size - 1)) {
+                if (this.products[i].equals(product)) {
+                    this.products[i].setCheckStatus(0)
+                    break
+                }
+            }
         } else {
             this.checked.add(product)
+            for (i in 0..(size - 1)) {
+                if (this.products[i].equals(product)) {
+                    this.products[i].setCheckStatus(1)
+                    break
+                }
+            }
         }
         this.calculatePrice()
+        this.updateToAdapter()
     }
 
     // cari tau berapa item yg akan di checkout

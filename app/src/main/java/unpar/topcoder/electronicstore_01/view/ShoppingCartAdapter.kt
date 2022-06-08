@@ -66,6 +66,9 @@ class ShoppingCartAdapter(
         this.shoppingCartEntryBinding.productImage.setImageResource(currProduct.getProduct().getImageSource())
         this.shoppingCartEntryBinding.quantity.text = currProduct.getQuantity().toString()
 
+        if (currProduct.getCheckStatus() == 0) this.shoppingCartEntryBinding.checkbox.isChecked = false
+        else this.shoppingCartEntryBinding.checkbox.isChecked = true
+
         this.shoppingCartEntryBinding.checkbox.setOnClickListener {
             this.presenter.check(currProduct)
         }
