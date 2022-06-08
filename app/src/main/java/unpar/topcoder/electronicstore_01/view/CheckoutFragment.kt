@@ -1,12 +1,17 @@
 package unpar.topcoder.electronicstore_01.view
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import org.parceler.Parcels
+import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.CheckOutFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Address
 import unpar.topcoder.electronicstore_01.model.Page
@@ -72,7 +77,11 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
             this.moveToPreviousFragment()
         // pay
         } else if (view == this.checkOutBinding.payBtn) {
-
+            if (this.checkOutBinding.customerName.text.toString().equals("") || this.checkOutBinding.customerName.text.toString().length == 0) {
+                Snackbar.make(this.checkOutBinding.root, "Select the shipment address", Snackbar.LENGTH_SHORT).show()
+            } else {
+                this.paymentOK()
+            }
         // choose address
         } else if (view == this.checkOutBinding.chooseAddressBtn) {
             var pg = Bundle()
@@ -99,5 +108,26 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
 
         var up = Bundle()
         parentFragmentManager.setFragmentResult(Page.UPDATE_FROM_CHECK_OUT, up)
+    }
+
+    // munculin popup payment berhasil & balik ke laman shopping cart
+    fun paymentOK() {
+        val builder = AlertDialog.Builder(activity)
+        val inflater = requireActivity().layoutInflater
+        val view = inflater.inflate(R.layout.payment_succeed_dialog, null)
+
+        builder.setView(view)
+            .setPositiveButton("Confirm",
+                DialogInterface.OnClickListener { dialog, id ->
+                    var products = Bundle()
+                    products.putParcelable("paidProducts", Parcels.wrap(this.presenter.getProducts()))
+                    parentFragmentManager.setFragmentResult(Page.DELETE_PAID_PRODUCTS, products)
+
+                    var pg = Bundle()
+                    pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
+                    parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
+                }
+            )
+        builder.show()
     }
 }

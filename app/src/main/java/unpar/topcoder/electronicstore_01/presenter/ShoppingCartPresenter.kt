@@ -98,4 +98,15 @@ class ShoppingCartPresenter(private val ui: ICart) {
         val formats = NumberFormat.getCurrencyInstance(localeID)
         return formats.format(price)
     }
+
+    // deleting paid products
+    fun deletePaidProds(paidProds: ArrayList<ShoppingCartItem>) {
+        var size = paidProds.size
+        for (i in 0..(size - 1)) {
+            this.products.remove(paidProds[i])
+            this.checked.remove(paidProds[i])
+        }
+        this.calculatePrice()
+        this.updateToAdapter()
+    }
 }

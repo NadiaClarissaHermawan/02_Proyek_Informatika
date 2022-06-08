@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:buttonTint="@color/dark_blue"/>
+        android:buttonTint="@color/dark_blue" />
 
     <ImageView
         android:id="@+id/product_image"

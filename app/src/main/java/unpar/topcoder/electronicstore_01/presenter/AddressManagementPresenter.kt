@@ -65,7 +65,15 @@ class AddressManagementPresenter(private var ui: IAddressManagement) {
     // delete selected address
     fun delete(address: Address) {
         this.addresses.remove(address)
+        if (this.addresses.size == 1) {
+            this.setDefault(this.addresses[0])
+        }
         this.updateToAdapter()
+    }
+
+    //return jumlah address yg ada
+    fun getSize() : Int {
+        return this.addresses.size
     }
 
     // teruskan address yg ingin diedit ke fragment

@@ -73,10 +73,11 @@ class AddressManagementFragment :
         if (view == this.chooseAddressBinding.floatingActionButton) {
             this.setupPopupAddress(0)
         } else if (view == this.chooseAddressBinding.back) {
-            var currAddress = Bundle()
-            currAddress.putParcelable("address", Parcels.wrap(this.presenter.getDefaultAddress()))
-            parentFragmentManager.setFragmentResult(Page.RECEIVE_DEFAULT_ADDRESS, currAddress)
-
+            if (this.presenter.getSize() > 0) {
+                var currAddress = Bundle()
+                currAddress.putParcelable("address", Parcels.wrap(this.presenter.getDefaultAddress()))
+                parentFragmentManager.setFragmentResult(Page.RECEIVE_DEFAULT_ADDRESS, currAddress)
+            }
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.CHECK_OUT_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)

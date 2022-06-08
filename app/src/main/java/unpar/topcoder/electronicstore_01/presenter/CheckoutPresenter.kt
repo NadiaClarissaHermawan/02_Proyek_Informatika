@@ -58,4 +58,9 @@ class CheckoutPresenter(private val ui: ICheckout) {
         val formats = NumberFormat.getCurrencyInstance(localeID)
         return formats.format(price)
     }
+
+    // return the products that have been bought
+    fun getProducts() : ArrayList<ShoppingCartItem> {
+        return this.products
+    }
 }

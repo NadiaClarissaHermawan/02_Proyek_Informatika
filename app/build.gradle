@@ -51,4 +51,7 @@ dependencies {
     //parcel needs
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+
+    //Library for Lottie animation (gif & animations)
+    implementation 'com.airbnb.android:lottie:3.4.1'
 }

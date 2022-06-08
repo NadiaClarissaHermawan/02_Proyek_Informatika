@@ -60,6 +60,13 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
             this.presenter.calculatePrice()
         }
 
+        // listener dari confirm payment, delete products yg sdh di bayar
+        parentFragmentManager.setFragmentResultListener(Page.DELETE_PAID_PRODUCTS, this) {
+                _, result ->
+            var products = Parcels.unwrap<Any>(result.getParcelable("paidProducts")) as ArrayList<ShoppingCartItem>
+            this.presenter.deletePaidProds(products)
+        }
+
         return this.shoppingCartBinding.root
     }
 
