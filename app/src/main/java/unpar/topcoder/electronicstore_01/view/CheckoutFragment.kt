@@ -3,11 +3,9 @@ package unpar.topcoder.electronicstore_01.view
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import org.parceler.Parcels
@@ -15,10 +13,8 @@ import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.CheckOutFragmentBinding
 import unpar.topcoder.electronicstore_01.model.Address
 import unpar.topcoder.electronicstore_01.model.Page
-import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.CheckoutPresenter
-import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 
 class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
     private lateinit var checkOutBinding: CheckOutFragmentBinding
@@ -47,7 +43,9 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
         // listener dari shopping cart fragment u/ terima checked products
         parentFragmentManager.setFragmentResultListener(Page.CHANGE_TO_CHECKOUT_LISTENER, this) {
                 _, result ->
-            this.presenter.initialProds(Parcels.unwrap<Any>(result.getParcelable("checkedProds")) as ArrayList<ShoppingCartItem>)
+            this.presenter.initialProds(Parcels.unwrap<Any>(
+                result.getParcelable("checkedProds")
+            ) as ArrayList<ShoppingCartItem>)
         }
 
         // listener untuk terima default address
@@ -77,8 +75,16 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
             this.moveToPreviousFragment()
         // pay
         } else if (view == this.checkOutBinding.payBtn) {
-            if (this.checkOutBinding.customerName.text.toString().equals("") || this.checkOutBinding.customerName.text.toString().length == 0) {
-                Snackbar.make(this.checkOutBinding.root, "Select the shipment address", Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.white)).setTextColor(getResources().getColor(R.color.dark_blue)).show()
+            if (
+                this.checkOutBinding.customerName.text.toString().equals("") ||
+                this.checkOutBinding.customerName.text.toString().length == 0) {
+                Snackbar.make(
+                    this.checkOutBinding.root,
+                    "Select the shipment address",
+                    Snackbar.LENGTH_SHORT
+                ).setBackgroundTint(
+                    getResources().getColor(R.color.white)
+                ).setTextColor(getResources().getColor(R.color.dark_blue)).show()
             } else {
                 this.paymentOK()
             }
@@ -89,7 +95,6 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
         }
     }
-
     // salurkan list hasil operasi ke adapter
     override fun updateCheckoutList(product: ArrayList<ShoppingCartItem>) {
         this.adapter.updateList(product)
@@ -109,7 +114,6 @@ class CheckoutFragment : Fragment(), ICheckout, View.OnClickListener {
         var up = Bundle()
         parentFragmentManager.setFragmentResult(Page.UPDATE_FROM_CHECK_OUT, up)
     }
-
     // munculin popup payment berhasil & balik ke laman shopping cart
     fun paymentOK() {
         val builder = AlertDialog.Builder(activity)

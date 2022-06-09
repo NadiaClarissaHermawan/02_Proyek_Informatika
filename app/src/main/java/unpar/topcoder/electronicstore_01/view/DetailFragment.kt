@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.snackbar.Snackbar
 import com.synnapps.carouselview.ImageListener
 import java.text.NumberFormat
 import java.util.*
@@ -48,7 +47,7 @@ class DetailFragment : Fragment(), View.OnClickListener {
 
     // click listener
     override fun onClick(view: View?) {
-        if (view==this.detailBinding.back) {
+        if (view == this.detailBinding.back) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, this.layout)
             parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER,pg)

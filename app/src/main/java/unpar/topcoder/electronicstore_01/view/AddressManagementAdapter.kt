@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import unpar.topcoder.electronicstore_01.databinding.ChooseAddressEntryBinding
 import unpar.topcoder.electronicstore_01.model.Address
-import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.presenter.AddressManagementPresenter
 
 class AddressManagementAdapter (
@@ -54,8 +53,11 @@ class AddressManagementAdapter (
         this.chooseAddressEntryBinding.customerContact.text = this.currentAddress.getNoHp()
         this.chooseAddressEntryBinding.customerName.text = this.currentAddress.getNama()
 
-        if (this.currentAddress.getIsDefault() == 1) this.chooseAddressEntryBinding.defaultSign.visibility = View.VISIBLE
-        else this.chooseAddressEntryBinding.defaultSign.visibility = View.INVISIBLE
+        if (this.currentAddress.getIsDefault() == 1) {
+            this.chooseAddressEntryBinding.defaultSign.visibility = View.VISIBLE
+        } else {
+            this.chooseAddressEntryBinding.defaultSign.visibility = View.INVISIBLE
+        }
 
         this.chooseAddressEntryBinding.editBtn.setOnClickListener {
             this.presenter.callEditPopup(currentAddress)

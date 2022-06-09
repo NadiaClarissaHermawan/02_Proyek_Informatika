@@ -1,12 +1,11 @@
 package unpar.topcoder.electronicstore_01.presenter
 
-import android.util.Log
-import com.google.android.material.snackbar.Snackbar
-import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
-import unpar.topcoder.electronicstore_01.view.ICheckout
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
+import unpar.topcoder.electronicstore_01.view.ICheckout
+
 
 class CheckoutPresenter(private val ui: ICheckout) {
     private var products: ArrayList<ShoppingCartItem> = ArrayList()
@@ -14,6 +13,16 @@ class CheckoutPresenter(private val ui: ICheckout) {
     // kirim list ke fragment -> adapter u/ dishow
     fun updateToAdapter() {
         this.ui.updateCheckoutList(this.products)
+    }
+
+    // calculate the total price
+    fun calculatePrice() {
+        var size = this.products.size
+        var total = 0
+        for (i in 0..(size - 1)) {
+            total = total + (this.products[i].getQuantity() * this.products[i].getProduct().getHarga())
+        }
+        this.ui.updateTotalPrice(total)
     }
 
     //add checked products from shopping cart
@@ -40,16 +49,6 @@ class CheckoutPresenter(private val ui: ICheckout) {
         }
         this.calculatePrice()
         this.updateToAdapter()
-    }
-
-    // calculate the total price
-    fun calculatePrice() {
-        var size = this.products.size
-        var total = 0
-        for (i in 0..(size - 1)) {
-            total = total + (this.products[i].getQuantity() * this.products[i].getProduct().getHarga())
-        }
-        this.ui.updateTotalPrice(total)
     }
 
     // format integer to rupiah

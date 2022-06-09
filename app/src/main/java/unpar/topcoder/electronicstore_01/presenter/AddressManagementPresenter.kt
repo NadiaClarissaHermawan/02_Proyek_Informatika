@@ -24,6 +24,21 @@ class AddressManagementPresenter(private var ui: IAddressManagement) {
         return false
     }
 
+    //set address as default
+    fun setDefault(address: Address) {
+        var size = this.addresses.size
+        for (i in 0..(size - 1)) {
+            if (this.addresses[i].getIsDefault() == 1) {
+                this.addresses[i].setIsDefault(0)
+            }
+            if (this.addresses[i].equals(address)) {
+                this.addresses[i].setIsDefault(1)
+            }
+        }
+        this.defaultAddress = address
+        this.updateToAdapter()
+    }
+
     // add new address
     fun addAddress(address: Address) {
         this.addresses.add(address)
@@ -44,21 +59,6 @@ class AddressManagementPresenter(private var ui: IAddressManagement) {
                 break
             }
         }
-        this.updateToAdapter()
-    }
-
-    //set address as default
-    fun setDefault(address: Address) {
-        var size = this.addresses.size
-        for (i in 0..(size - 1)) {
-            if (this.addresses[i].getIsDefault() == 1) {
-                this.addresses[i].setIsDefault(0)
-            }
-            if (this.addresses[i].equals(address)) {
-                this.addresses[i].setIsDefault(1)
-            }
-        }
-        this.defaultAddress = address
         this.updateToAdapter()
     }
 

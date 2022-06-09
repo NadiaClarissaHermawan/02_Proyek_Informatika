@@ -77,7 +77,10 @@ class AddressManagementFragment :
             if (this.presenter.getSize() > 0) {
                 currAddress.putParcelable("address", Parcels.wrap(this.presenter.getDefaultAddress()))
             } else {
-                currAddress.putParcelable("address", Parcels.wrap(Address("", "Please kindly add the shipment address..","",0)))
+                currAddress.putParcelable(
+                    "address",
+                    Parcels.wrap(Address("", "Please kindly add the shipment address..","",0))
+                )
             }
             parentFragmentManager.setFragmentResult(Page.RECEIVE_DEFAULT_ADDRESS, currAddress)
 
@@ -116,7 +119,12 @@ class AddressManagementFragment :
                         }
                         dialog.dismiss()
                     } else {
-                        Snackbar.make(this.chooseAddressBinding.root, "Please fill the form.", Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.gray)).setTextColor(getResources().getColor(R.color.dark_blue)).show()
+                        Snackbar.make(
+                            this.chooseAddressBinding.root,
+                            "Please fill the form.",
+                            Snackbar.LENGTH_SHORT).setBackgroundTint(
+                                getResources().getColor(R.color.gray)
+                                ).setTextColor(getResources().getColor(R.color.dark_blue)).show()
                     }
                 })
             .setNegativeButton("Cancel",

@@ -63,29 +63,6 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         return this.listBinding.root
     }
 
-    //set splashscreen anim
-    fun setSplashAnimation() {
-        this.listBinding.splashBg.animate().translationX((-2800).toFloat()).setDuration(500).setStartDelay(4000)
-        this.listBinding.logo.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
-        this.listBinding.appName.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
-    }
-
-    // salurkan updated product list dari presenter ke adapter untuk ditampilkan
-    override fun updateList(products: ArrayList<ProductDetails>, newDataOffset: Int) {
-        this.adapter.updateList(products)
-        if (newDataOffset != -1) {
-            this.dataOffset = newDataOffset
-        }
-    }
-
-    // load & update product list, then sync with filters
-    private fun callUpdateList(offset: Int, target: Int) {
-        this.presenter.updateList(offset, target)
-        val keyword = listBinding.searchBar.text.toString()
-        val category = listBinding.dropdownCategory.selectedItemPosition
-        this.presenter.changeCategoryFilter(category - 1, target + 1, keyword)
-    }
-
     // onclick listener method
     override fun onClick(view: View?) {
         // ganti ke grid frag & sync product
@@ -100,7 +77,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             target.putString("keyword", this.listBinding.searchBar.text.toString())
             parentFragmentManager.setFragmentResult(Page.SYNC_LISTENER, target)
 
-        // ganti ke shopping cart page
+            // ganti ke shopping cart page
         } else if (view == this.listBinding.cart1) {
             var pg = Bundle()
             pg.putInt(Page.PAGE, Page.SHOPPING_CART_PAGE)
@@ -110,11 +87,11 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
             currPg.putInt("layout", Page.LIST_PAGE)
             parentFragmentManager.setFragmentResult(Page.CHANGE_TO_SHOPPING_CART_LISTENER, currPg)
 
-        // load more
+            // load more
         } else if (view == this.listBinding.buttonLoadMore) {
             this.callUpdateList(this.dataOffset, this.dataOffset + 4)
 
-        // sort product's name
+            // sort product's name
         } else if (view == this.listBinding.productName) {
             if (this.sortByName == 0) {
                 this.presenter.sorting(0, 0)
@@ -124,7 +101,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.sortByName = 0
             }
 
-        // sort product's price
+            // sort product's price
         } else if (view == this.listBinding.productPrice) {
             if (this.sortByPrice == 0) {
                 this.presenter.sorting(1, 0)
@@ -134,7 +111,7 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
                 this.sortByPrice = 0
             }
 
-        // sort product's condition
+            // sort product's condition
         } else if (view == this.listBinding.productCondition) {
             if (this.sortByCondition == 0) {
                 this.presenter.sorting(2, 0)
@@ -168,6 +145,30 @@ class ListFragment : Fragment(), IList, View.OnClickListener, AdapterView.OnItem
         pg.putInt(Page.PAGE, Page.DETAIL_PAGE)
         parentFragmentManager.setFragmentResult(Page.CHANGE_PAGE_LISTENER, pg)
     }
+
+    // salurkan updated product list dari presenter ke adapter untuk ditampilkan
+    override fun updateList(products: ArrayList<ProductDetails>, newDataOffset: Int) {
+        this.adapter.updateList(products)
+        if (newDataOffset != -1) {
+            this.dataOffset = newDataOffset
+        }
+    }
+
+    //set splashscreen anim
+    fun setSplashAnimation() {
+        this.listBinding.splashBg.animate().translationX((-2800).toFloat()).setDuration(500).setStartDelay(4000)
+        this.listBinding.logo.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
+        this.listBinding.appName.animate().translationX((-2050).toFloat()).setDuration(500).setStartDelay(4000);
+    }
+
+    // load & update product list, then sync with filters
+    private fun callUpdateList(offset: Int, target: Int) {
+        this.presenter.updateList(offset, target)
+        val keyword = listBinding.searchBar.text.toString()
+        val category = listBinding.dropdownCategory.selectedItemPosition
+        this.presenter.changeCategoryFilter(category - 1, target + 1, keyword)
+    }
+
 
     // singleton constructor
     companion object {
