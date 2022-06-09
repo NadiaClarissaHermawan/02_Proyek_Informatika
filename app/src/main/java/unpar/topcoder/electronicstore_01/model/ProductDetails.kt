@@ -10,9 +10,10 @@ class ProductDetails (
     private var kondisi: Int,
     private var kategori: String,
     private var harga: Int,
-    private var imageSource:Int,
-    private var imageSource2:Int,
-    private var imageSource3:Int
+    private var imageSource: Int,
+    private var imageSource2: Int,
+    private var imageSource3: Int,
+    private var description: String
 ): Parcelable {
 
     fun getNama() : String {
@@ -41,5 +42,9 @@ class ProductDetails (
 
     fun getImageSource3() : Int {
         return this.imageSource3
+    }
+
+    fun getDescription() : String {
+        return this.description
     }
 }

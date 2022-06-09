@@ -92,6 +92,7 @@ class DetailFragment : Fragment(), View.OnClickListener {
         this.detailBinding.productCondition.text = "" + this.currProductDetails.getKondisi() + "% new"
         this.detailBinding.productName.text = this.currProductDetails.getNama()
         this.detailBinding.productPrice.text = this.convertInt(this.currProductDetails.getHarga())
+        this.detailBinding.productDescription.text = this.currProductDetails.getDescription()
 
         // untuk ngeset image carousel
         var imageArray: ArrayList<Int> =  ArrayList()
