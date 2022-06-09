@@ -4,8 +4,6 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import java.text.NumberFormat
-import java.util.*
 import kotlin.collections.ArrayList
 import unpar.topcoder.electronicstore_01.databinding.ShoppingCartEntryBinding
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
@@ -15,7 +13,7 @@ import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
 class ShoppingCartAdapter(
     private var activity: Activity,
     private var presenter: ShoppingCartPresenter
-    ) : BaseAdapter() {
+) : BaseAdapter() {
 
     private lateinit var shoppingCartEntryBinding: ShoppingCartEntryBinding
     private var prods: ArrayList<ShoppingCartItem> = ArrayList()
@@ -35,7 +33,7 @@ class ShoppingCartAdapter(
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?) : View {
         // bind dengan layout shopping cart entry
         var view: View? = p1
-        if(view == null) {
+        if (view == null) {
             this.shoppingCartEntryBinding = ShoppingCartEntryBinding.inflate(this.activity.layoutInflater)
             view = this.shoppingCartEntryBinding.root
             view.setTag(this.shoppingCartEntryBinding)

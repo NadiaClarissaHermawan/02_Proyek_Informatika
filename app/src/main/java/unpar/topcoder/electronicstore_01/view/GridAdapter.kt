@@ -4,12 +4,13 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import unpar.topcoder.electronicstore_01.databinding.ProductGridEntryBinding
-import unpar.topcoder.electronicstore_01.model.ProductDetails
-import unpar.topcoder.electronicstore_01.presenter.GridPresenter
 import java.util.*
 import java.text.NumberFormat
 import kotlin.collections.ArrayList
+import unpar.topcoder.electronicstore_01.databinding.ProductGridEntryBinding
+import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.presenter.GridPresenter
+
 
 class GridAdapter(
     private var activity: Activity,

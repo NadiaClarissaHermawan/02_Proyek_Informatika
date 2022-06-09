@@ -1,12 +1,12 @@
 package unpar.topcoder.electronicstore_01.view
 
-import android.graphics.Color
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import kotlin.collections.ArrayList
 import org.parceler.Parcels
 import unpar.topcoder.electronicstore_01.databinding.ShoppingCartFragmentBinding
@@ -14,8 +14,6 @@ import unpar.topcoder.electronicstore_01.model.Page
 import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.ShoppingCartPresenter
-import android.view.Gravity
-import com.google.android.material.snackbar.Snackbar
 import unpar.topcoder.electronicstore_01.R
 
 class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
@@ -91,7 +89,13 @@ class ShoppingCartFragment : Fragment(), ICart, View.OnClickListener {
                 checkout.putParcelable("checkedProds", Parcels.wrap(this.presenter.getChecked()))
                 parentFragmentManager.setFragmentResult(Page.CHANGE_TO_CHECKOUT_LISTENER, checkout)
             } else {
-                Snackbar.make(this.shoppingCartBinding.root, "Please check any product to continue", Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.white)).setTextColor(getResources().getColor(R.color.dark_blue)).show()
+                Snackbar.make(
+                    this.shoppingCartBinding.root,
+                    "Please check any product to continue",
+                    Snackbar.LENGTH_SHORT
+                ).setBackgroundTint(
+                    getResources().getColor(R.color.white)
+                ).setTextColor(getResources().getColor(R.color.dark_blue)).show()
             }
         }
     }

@@ -12,7 +12,10 @@ import unpar.topcoder.electronicstore_01.model.ProductDetails
 import unpar.topcoder.electronicstore_01.presenter.ListPresenter
 
 
-class ListAdapter(private var activity: Activity, private var presenter: ListPresenter) : BaseAdapter() {
+class ListAdapter(
+    private var activity: Activity,
+    private var presenter: ListPresenter
+) : BaseAdapter() {
     private lateinit var listItemBinding : ProductListEntryBinding
     private var prods: ArrayList<ProductDetails> = ArrayList()
 

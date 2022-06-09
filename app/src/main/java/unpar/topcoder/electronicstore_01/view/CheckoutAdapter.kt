@@ -6,19 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.google.android.material.snackbar.Snackbar
+import kotlin.collections.ArrayList
 import unpar.topcoder.electronicstore_01.R
 import unpar.topcoder.electronicstore_01.databinding.CheckOutEntryBinding
 import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
 import unpar.topcoder.electronicstore_01.presenter.CheckoutPresenter
-import kotlin.collections.ArrayList
+
 
 class CheckoutAdapter(
     private var activity: Activity,
     private var presenter: CheckoutPresenter,
-    private var context: Context)
-    : BaseAdapter() {
+    private var context: Context
+) : BaseAdapter() {
 
-    private lateinit var checkoutItemBinding : CheckOutEntryBinding
+    private lateinit var checkoutItemBinding: CheckOutEntryBinding
     private var prods: ArrayList<ShoppingCartItem> = ArrayList()
 
     override fun getCount() : Int {
@@ -36,7 +37,7 @@ class CheckoutAdapter(
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?) : View {
         // bind dengan layout checkout entry
         var view: View? = p1
-        if(view == null) {
+        if (view == null) {
             this.checkoutItemBinding = CheckOutEntryBinding.inflate(this.activity.layoutInflater)
             view = this.checkoutItemBinding.root
             view.setTag(this.checkoutItemBinding)
@@ -61,13 +62,22 @@ class CheckoutAdapter(
     //show selected products to layout
     fun updateLayout(currProduct: ShoppingCartItem) {
         this.checkoutItemBinding.productName.text = currProduct.getProduct().getNama()
-        this.checkoutItemBinding.productPrice.text = this.presenter.convertInt(currProduct.getProduct().getHarga())
-        this.checkoutItemBinding.productImage.setImageResource(currProduct.getProduct().getImageSource())
+        this.checkoutItemBinding.productPrice.text =
+            this.presenter.convertInt(currProduct.getProduct().getHarga())
+        this.checkoutItemBinding.productImage.setImageResource(
+            currProduct.getProduct().getImageSource()
+        )
         this.checkoutItemBinding.quantity.text = currProduct.getQuantity().toString()
 
         this.checkoutItemBinding.min.setOnClickListener {
             if (currProduct.getQuantity() == 1) {
-                Snackbar.make(this.checkoutItemBinding.root, "The minimum amount to purchase is 1.", Snackbar.LENGTH_SHORT).setBackgroundTint(context.resources.getColor(R.color.white)).setTextColor(context.resources.getColor(R.color.dark_blue)).show()
+                Snackbar.make(
+                    this.checkoutItemBinding.root,
+                    "The minimum amount to purchase is 1.",
+                    Snackbar.LENGTH_SHORT
+                ).setBackgroundTint(
+                        context.resources.getColor(R.color.white)
+                    ).setTextColor(context.resources.getColor(R.color.dark_blue)).show()
             } else {
                 this.presenter.operate(1, currProduct)
             }

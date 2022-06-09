@@ -9,19 +9,19 @@ class Address(private var nama: String,
               private var alamat: String,
               private var isDefault: Int
 ) : Parcelable {
-    fun getNama() : String{
+    fun getNama() : String {
         return this.nama;
     }
 
-    fun getNoHp() : String{
+    fun getNoHp() : String {
         return this.no_hp;
     }
 
-    fun getAlamat() : String{
+    fun getAlamat() : String {
         return this.alamat;
     }
 
-    fun getIsDefault() : Int{
+    fun getIsDefault() : Int {
         return this.isDefault;
     }
 

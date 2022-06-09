@@ -1,11 +1,12 @@
 package unpar.topcoder.electronicstore_01.presenter
 
-import unpar.topcoder.electronicstore_01.model.ProductDetails
-import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
-import unpar.topcoder.electronicstore_01.view.ICart
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import unpar.topcoder.electronicstore_01.model.ProductDetails
+import unpar.topcoder.electronicstore_01.model.ShoppingCartItem
+import unpar.topcoder.electronicstore_01.view.ICart
+
 
 class ShoppingCartPresenter(private val ui: ICart) {
     private var products: ArrayList<ShoppingCartItem> = ArrayList()
