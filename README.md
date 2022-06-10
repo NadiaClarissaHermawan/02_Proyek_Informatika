@@ -65,5 +65,7 @@ This screen is for adding/editing address. see screen design here:
 - Android phone: Samsung Galaxy S21, OnePlus 9 series
 
 ## How To Run the Project:
-Work in progress.. please wait
+1. Click the latest release in the Release section
+2. Download the v.0.0.1.apk file
+3. Install the file in your android smartphone
 
