@@ -177,8 +177,8 @@
         <!--moving splash screen background-->
         <ImageView
             android:id="@+id/splash_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="910dp"
+            android:layout_width="2000dp"
+            android:layout_height="2000dp"
             android:src="@drawable/splash_background"
             app:layout_constraintVertical_bias="0"
             android:scaleType="centerCrop"
