@@ -66,6 +66,6 @@ This screen is for adding/editing address. see screen design here:
 
 ## How To Run the Project:
 1. Click the 'latest release' inside the Release section
-2. Download the v.0.0.2.apk file
+2. Download the v.0.0.3.apk file
 3. Install & run the file in your android smartphone
 
